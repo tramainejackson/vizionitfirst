@@ -27,15 +27,13 @@ class AdminController extends Controller
      */
     public function index() {
 	    $admin = Auth::user();
-	    $messages = Message::all();
-	    $services = Service::all();
-	    $clients = Client::all();
 	    $members = Member::all();
+	    $messages = Message::all();
 	    $articles = NewsArticle::all();
 	    $states = DB::select('select * from states');
 	    $today = Carbon::now();
 
-        return view('admin.index', compact('admin', 'clients', 'messages', 'services', 'members', 'states', 'articles', 'today'));
+        return view('admin.index', compact('admin', 'messages', 'members', 'states', 'articles', 'today'));
     }
 
     /**
