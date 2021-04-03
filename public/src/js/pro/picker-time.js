@@ -106,7 +106,7 @@ jQuery(($) => {
   ].join('');
 
   // ClockPicker
-  function ClockPicker(element) {
+  function ClockPicker(element, option) {
     var popover = $(tpl),
         plate = popover.find('.clockpicker-plate'),
         holder = popover.find('.picker__holder'),
@@ -1242,6 +1242,12 @@ jQuery(($) => {
       if (!data) {
         $this.data('clockpicker', new ClockPicker($this));
       } else {
+        const isNewOption = Object.keys(option).length;
+        if (isNewOption) {
+          $.each(option, (key, value) => {
+            $this.data().clockpicker.options[key] = value;
+          })
+        }
         // Manual operations. show, hide, remove, e.g.
         if (typeof data[option] === 'function')
           data[option].apply(data, args);

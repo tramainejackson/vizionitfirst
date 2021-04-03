@@ -52,8 +52,13 @@ export default class MaterialSelectViewRenderer {
     if( this.view.$nativeSelect.hasClass('select-wrapper')) {
       this.view.$nativeSelect.find('select').unwrap();
     }
+
+    if( this.view.$nativeSelect.parent().hasClass('select-wrapper')) {
+      this.view.$nativeSelect.parent().find('select').unwrap();
+    }
    
     $(`ul#select-options-${currentUuid}`).remove();
+
   }
 
   render() {

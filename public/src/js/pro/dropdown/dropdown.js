@@ -415,6 +415,13 @@ jQuery(($) => {
 
     return dropdown.returnPublicInterface();
   };
-
+  $.dropdown = {
+    initAnimations: () => {
+      Dropdown.bindBootstrapEvents();
+    }
+  };
+  
   Dropdown.mdbDropdownAutoInit();
+
 });
+

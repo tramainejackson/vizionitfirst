@@ -1,6 +1,6 @@
 <header>
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg">
+    <nav class="navbar navbar-toggleable-md navbar-expand-lg bg-dark z-depth-0 position-absolute" style="min-height: 75px;">
         <!-- Brand -->
         {{--<a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">--}}
             {{--<img src="https://mdbootstrap.com/wp-content/uploads/2018/06/logo-mdb-jquery-small.png" alt="Logo">--}}
@@ -16,76 +16,58 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <!-- left -->
-            <ul class="navbar-nav nav-flex-icons mr-auto">
-                <li class="nav-item">
-                    <a href="#" class="nav-link waves-effect" target="">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link waves-effect" target="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link waves-effect" target="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+            <ul class="navbar-nav nav-flex-icons align-items-center justify-content-start col-4">
+
+                @if(Auth::user())
+
+                    <li class="nav-item" style="font-size: 1.5rem;">
+                        <a class="nav-link waves-effect white-text" href="{{ route('administrator.index') }}">Admin</a>
+                    </li>
+
+                    <li class="nav-item" style="font-size: 1.5rem;">
+                        <a class="nav-link waves-effect white-text" href="{{ route('news.index') }}">Events</a>
+                    </li>
+
+                    <li class="nav-item" style="font-size: 1.5rem;">
+                        <a class="nav-link waves-effect white-text" href="{{ route('members.index') }}">Members</a>
+                    </li>
+
+                @else
+
+                    <li class="nav-item dropdown" style="font-size: 1.5rem;">
+                        <a class="nav-link dropdown-toggle white-text" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+
+                        <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item white-text" href="{{ route('about') }}">Our Mission</a>
+                            <a class="dropdown-item white-text" href="{{ route('members.index') }}">The Team</a>
+                            <a class="dropdown-item white-text" href="{{ route('about') }}">Contact Us</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item" style="font-size: 1.5rem;">
+                        <a class="nav-link waves-effect white-text" href="{{ route('news.index') }}">Events/News</a>
+                    </li>
+
+                    <li class="nav-item" style="font-size: 1.5rem;">
+                        <a class="nav-link waves-effect white-text" href="{{ route('login') }}">Login</a>
+                    </li>
+                @endif
+            </ul>
+
+            <!-- middle -->
+            <ul class="navbar-nav col-4">
+                <li class="nav-item flex-fill text-center">
+                    <a href="{{ route('home_index') }}" class="nav-link waves-effect text-center white-text coolText3" target="" style="font-size: 36px;">Vizion It First</a>
                 </li>
             </ul>
 
             <!-- right -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link waves-effect{{ url()->current() == url('') ? ' active-nav-item': '' }}" href="{{ route('home_index') }}">Home</a>
+            <ul class="navbar-nav nav-flex-icons align-items-center justify-content-end col-4">
+                <li class="nav-item flex-fill">
+                    <a href="#" class="nav-link waves-effect text-right" target="">
+                        <button class="btn btn-lg btn-rounded btn-green mr-0" type="button">Donate</button>
+                    </a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link waves-effect{{ substr_count(url()->current(),'services') > 0 ? ' active-nav-item': '' }}" href="{{ route('services.index') }}">Services</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link waves-effect{{ substr_count(url()->current(),'clients') > 0 ? ' active-nav-item': '' }}" href="{{ route('clients.index') }}">Clients</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link waves-effect{{ substr_count(url()->current(),'news') > 0 ? ' active-nav-item': '' }}" href="{{ route('news.index') }}">News</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link waves-effect{{ substr_count(url()->current(),'members') > 0 ? ' active-nav-item': '' }}" href="{{ route('members.index') }}">Members</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link waves-effect{{ substr_count(url()->current(),'contact') > 0 ? ' active-nav-item': '' }}" href="{{ route('contact_us') }}">Contact</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link waves-effect{{ substr_count(url()->current(),'about') > 0 ? ' active-nav-item': '' }}" href="{{ route('about') }}">About</a>
-                </li>
-
-                @if(Auth::user())
-                    <li class="nav-item">
-                        <a class="nav-link waves-effect{{ substr_count(url()->current(),'administrator') > 0 ? ' active-nav-item': '' }}" href="{{ route('administrator.index') }}">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link waves-effect{{ substr_count(url()->current(),'messages') > 0 ? ' active-nav-item': '' }}" href="{{ route('messages.index') }}">Messages</a>
-                    </li>
-
-                    <li class="nav-item d-none d-sm-flex">
-                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt"></i> Logout
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
-                @else
-                    <li class="nav-item">
-                        <a class="nav-link waves-effect" href="{{ route('login') }}">Login</a>
-                    </li>
-                @endif
             </ul>
         </div>
     </nav>

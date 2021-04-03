@@ -30,7 +30,6 @@
   * The picker constructor that creates a blank picker.
   */
   function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
-  
     // If there’s no element, return the picker constructor.
     if ( !ELEMENT ) return PickerConstructor;
   
@@ -95,7 +94,7 @@
                 P.component = new COMPONENT(P, SETTINGS);
                   // Create the picker root and then prepare it.
                 P.$root = $( `
-                <div class="${CLASSES.picker} datepicker" id="${ELEMENT.id}_root" />
+                    <div class="${CLASSES.picker} datepicker" id="${ELEMENT.id}_root" />
                 ` );
                 prepareElementRoot();
   
@@ -119,15 +118,11 @@
                 if ( SETTINGS.containerHidden ) $( SETTINGS.containerHidden ).append( P._hidden );
                 else $ELEMENT.after( P._hidden );
 
-                if (SETTINGS.inline) {
-                    $('body').append( P.$root);
-                    P.$root.hide();
-                } else {
-                    $('body').append( P.$root);
-                }
+                $('body').append( P.$root);
                 
-  
-  
+                if (SETTINGS.inline) {
+                    P.$root.hide();
+                }
                 // Bind the default component and settings events.
                 P.on({
                     start: P.component.onStart,
@@ -157,11 +152,7 @@
   
   
                 // Trigger queued the “start” and “render” events.
-                if (SETTINGS.inline) {
-                    return P.trigger( 'start' );
-                } else {
-                    return P.trigger( 'start' ).trigger( 'render' );
-                }
+                return P.trigger( 'start' ).trigger( 'render' );
             }, //start
   
   
@@ -246,12 +237,15 @@
                     aria( P.$root[0], 'hidden', false );
   
                 }, 0 );
-  
+
                 // If we have to give focus, bind the element and doc events.
                 if ( dontGiveFocus !== false ) {
-  
+
                     // Set it as open.
                     STATE.open = true;
+                    if (SETTINGS.inline) {
+                        P.$root.show();
+                    }
   
                     // Prevent the page from scrolling.
                     if ( IS_DEFAULT_THEME ) {
@@ -402,6 +396,9 @@
                 $document.off( '.' + STATE.id );
                 // Set it as closed.
                 STATE.open = false;
+                if (SETTINGS.inline) {
+                    P.$root.hide();
+                }
                 // Trigger the queued “close” events.
                 return P.trigger( 'close' );
             }, //close
@@ -587,9 +584,8 @@
      * Wrap the picker holder components together.
      */
     function createWrappedComponent() {
-  
         // Create a picker wrapper holder
-        return `<div class="${CLASSES.holder}" tabindex="-1">
+        return `<div class="${CLASSES.holder} ${SETTINGS.inline ? 'inline' : ''}" tabindex="-1">
                     <div class="${CLASSES.frame}">
                         <div class="${CLASSES.wrap}">
                             <div class="${CLASSES.box}">
@@ -622,13 +618,12 @@
         if (SETTINGS.inline) {
             // On focus/click, open the picker.
             $ELEMENT.siblings('i').on('click', () => {
-                P.$root.show();
-                const popper = new Popper($(ELEMENT), P.$root, {
-                    placement: 'top',
-                    modifier: {
+                 const popper = new Popper($(ELEMENT), P.$root, {
+                    placement: 'bottom-end',
+                    modifiers: {
                         offset: {
                             enabled: true,
-                            offset: '0.10'
+                            offset: '-300, 0'
                         }
                     }
                 });
@@ -815,15 +810,15 @@
         var name;
   
         if ( SETTINGS.hiddenName === true ) {
-            name = ELEMENT.name;
-            ELEMENT.name = '';
+            name = $ELEMENT.attr('name');
+            $ELEMENT.attr('name', '');
         }
         else {
             name = [
                 typeof SETTINGS.hiddenPrefix == 'string' ? SETTINGS.hiddenPrefix : '',
                 typeof SETTINGS.hiddenSuffix == 'string' ? SETTINGS.hiddenSuffix : '_submit'
             ];
-            name = name[0] + ELEMENT.name + name[1];
+            name = name[0] + $ELEMENT.attr('name') + name[1];
         }
   
         P._hidden = $(
@@ -846,7 +841,8 @@
   
             // If the value changes, update the hidden input with the correct format.
             on('change.' + STATE.id, function() {
-                P._hidden.value = ELEMENT.value ?
+                const pickerInput = $(ELEMENT).find('input.picker__input');
+                P._hidden.value = pickerInput.val() ?
                     P.get('select', SETTINGS.formatSubmit) :
                     '';
             });

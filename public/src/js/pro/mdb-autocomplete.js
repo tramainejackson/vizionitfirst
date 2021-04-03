@@ -21,6 +21,8 @@
       this.endCharCode = 35;
       this.arrowUpCharCode = 38;
       this.arrowDownCharCode = 40;
+      this.tabCharCode = 9;
+      this.shiftCharCode = 16;
       this.count = -1;
       this.nextScrollHeight = -45;
       this.$input = input;
@@ -40,6 +42,7 @@
       this.inputFocus();
       this.inputBlur();
       this.inputKeyupData();
+      this.inputTabPrevent();
       this.inputLiClick();
       this.clearAutocomplete();
       this.setAutocompleteWrapHeight();
@@ -77,18 +80,54 @@
 
         this.$input.css('border-bottom', this.options.inputBlur);
         this.$input.css('box-shadow', this.options.inputBlurShadow);
+        this.$autocompleteWrap.empty();
+      });
+    }
+
+    inputTabPrevent() {
+      let keys = {};
+      this.$input.on("keydown keyup", e => {
+        if (e.type == "keydown" && this.$input.val()) {
+          keys[e.which] = true;
+
+          if (keys[this.shiftCharCode] && keys[this.tabCharCode]) {
+            e.preventDefault();
+            this.$clearButton.focus();
+          } else if (keys[this.tabCharCode] && !keys[this.shiftCharCode]) {
+            e.preventDefault();
+            this.$clearButton.focus();
+          }
+        } else if (e.type == "keyup") {
+          keys = {};
+        }
+      });
+
+      this.$clearButton.on("keydown keyup", e => {
+        if (e.type == "keydown" && this.$input.val()) {
+          keys[e.which] = true;
+
+          if (keys[this.shiftCharCode] && keys[this.tabCharCode]) {
+            e.preventDefault();
+            this.$input.focus();
+          } else if (keys[this.tabCharCode] && !keys[this.shiftCharCode]) {
+            e.preventDefault();
+            this.$input.focus();
+          }
+        } else if (e.type == "keyup") {
+          keys = {};
+        }
       });
     }
 
     inputKeyupData() {
 
-      this.$input.on('keyup', e => {
-
+      this.$input.on('focus input  keyup', e => {
+        
         if (e.which === this.enterCharCode) {
           if (!this.options.data.includes(this.$input.val())) {
             this.options.data.push(this.$input.val());
           }
-          this.$autocompleteWrap.find('.selected').trigger('click');
+          this.$autocompleteWrap.find('.selected').trigger('mousedown');
           this.$autocompleteWrap.empty();
           this.inputBlur();
           this.count = -1;
@@ -206,7 +245,7 @@
 
     inputLiClick() {
 
-      this.$autocompleteWrap.on('click', 'li', e => {
+      this.$autocompleteWrap.on('mousedown', 'li', e => {
         e.preventDefault();
 
         this.$input.val($(e.target).text());

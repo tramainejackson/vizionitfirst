@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 class Member extends Authenticatable
@@ -51,6 +52,27 @@ class Member extends Authenticatable
 	}
 
 	/**
+	 * Get the avatar of the member
+	 */
+	public function getAvatarAttribute($value) {
+
+		// Check if file exist
+		if($value !== null) {
+			$img_file = Storage::disk('public')->exists('images/' . $value);
+
+			if($img_file) {
+				$img_file = $value;
+			} else {
+				$img_file = 'empty_face.png';
+			}
+		} else {
+			$img_file = 'empty_face.png';
+		}
+
+		return $img_file;
+	}
+
+	/**
 	* Set the name of the member
 	*/
 	public function setTitleAttribute($value) {
@@ -72,27 +94,12 @@ class Member extends Authenticatable
 	}
 
 	/**
-	* Set the owner of the member
-	*/
-	public function getAvatar($value) {
-
-		// Check if file exist
-		$img_file = Storage::disk('public')->exists('images/' . $value . '_sm.png');
-
-		if($img_file) {
-			$img_file = $value . '_sm.png';
-		} else {
-			$img_file = 'default.png';
-		}
-
-		$this->attributes['avatar'] = $img_file;
-	}
-
-	/**
 	 * Check for active clients
 	 */
 	public function scopeShowMembers($query) {
-		return $query->where('active', '=', 1)
-			->get();
+		return $query->where([
+			['active', '=', 1],
+			['non_profit', '=', 1],
+		])->get();
 	}
 }

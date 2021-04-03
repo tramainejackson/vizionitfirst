@@ -53,6 +53,7 @@ jQuery(($) => {
       this.$menu = $(`#${this.$element.attr('data-activates')}`);
       this.$sidenavOverlay = $('#sidenav-overlay');
       this.$dragTarget = $('<div class="drag-target"></div>');
+      this.isTouchDevice = 'ontouchstart' in document.documentElement;
       this.$body.append(this.$dragTarget);
 
     }
@@ -129,7 +130,9 @@ jQuery(($) => {
 
       $(window).on('resize', () => {
 
-        $('.fixed-sn main, .fixed-sn footer').css('padding-left', this.options.menuWidth);
+        if (!this.isTouchDevice) {
+          $('.fixed-sn main, .fixed-sn footer').css('padding-left', this.options.menuWidth);
+        }
         if (window.innerWidth > this.options.breakpoint) {
           
           if (this.$sidenavOverlay.length) {
@@ -143,12 +146,12 @@ jQuery(($) => {
             this.$menu.css('transform', 'translateX(0%)');
             this.menuOut = true; 
           }
-        } else if (this.menuOut === false) {
+        } else if (this.menuOut === false && !this.isTouchDevice) {
           
           const xValue = this.options.edge === 'left' ? '-100' : '100';
           this.$menu.css('transform', `translateX(${xValue}%)`);
           this.removeMenu(true);
-        } else {
+        } else if (!this.isTouchDevice) {
           this.menuOut = false; 
           this.removeMenu(true);
         }
@@ -192,12 +195,13 @@ jQuery(($) => {
       
       // eslint-disable-next-line consistent-return
       this.$element.on('click', e => {
-
         e.preventDefault();
+
         if (this.menuOut === true) {
           return this.removeMenu();
         } else {
           $(this).trigger('sidenav_open', [this.options.onOpen]);
+          this.menuOut = true;
         }
 
         if (this.options.showOverlay === true) {

@@ -1404,31 +1404,25 @@ $.extend($.fn.datepicker.defaults, {
   onRender: function () {
     var $pickerInstance = this.$root;
 
-    var year = this.get('highlight', 'yyyy');
     var day = this.get('highlight', 'dd');
     var month = this.get('highlight', 'mmm');
     var labeldayFirstThreeLetters = this.get('highlight', 'dddd').slice(0, 3);
     var monthFirstUC = month.charAt(0).toUpperCase() + month.slice(1);
+    var isInline = this.component.settings.inline;
 
-    $pickerInstance.find('.picker__header').prepend(`
-      <div class="picker__date-display">
-        <div class="picker__title-display">SELECT DATE</div>
-        <div class="picker__date-container">
-          <span class="picker__weekday-display">${labeldayFirstThreeLetters},</span>
-          <span class="picker__month-display">${monthFirstUC}</span>
-          <span class="picker__day-display">${day}</span>
+    if (!isInline) {
+      $pickerInstance.find('.picker__header').prepend(`
+        <div class="picker__date-display">
+          <div class="picker__title-display">SELECT DATE</div>
+          <div class="picker__date-container">
+            <span class="picker__weekday-display">${labeldayFirstThreeLetters},</span>
+            <span class="picker__month-display">${monthFirstUC}</span>
+            <span class="picker__day-display">${day}</span>
+          </div>
         </div>
-      </div>`);
+      `);
+    }
+
   }
 });
 
-$('.picker-opener').on('click', function (event) {
-  event.preventDefault();
-  event.stopPropagation();
-
-  const elementOpenData = event.target.dataset.open;
-  const $input = $(`#${elementOpenData}`).datepicker();
-  const picker = $input.datepicker('picker');
-
-  picker.open();
-});

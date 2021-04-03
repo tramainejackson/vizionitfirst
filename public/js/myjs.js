@@ -17,6 +17,9 @@ $(document).ready(function() {
     // var sideNavScrollbar = document.querySelector('.custom-scrollbar');
     // var ps = new PerfectScrollbar(sideNavScrollbar);
 
+    // Make the page header half the screen size
+    $('.page_header > div').css({'min-height':(winHeight/2) + 'px'});
+
     // Since fixed height for nav, add nav height to container
     $('#content_container').css({'margin-top':$('nav').height() + 'px'});
 

@@ -45,9 +45,10 @@ class NewsArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+	    $today          =  Carbon::now();
+
+	    return view('admin.news.create', compact('today'));
     }
 
     /**

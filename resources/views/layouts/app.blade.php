@@ -12,7 +12,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>R P Management Firm</title>
+    <title>Vizion It First</title>
 
     <!-- Styles -->
     <!-- Font Awesome -->
@@ -22,8 +22,10 @@
     <!-- Material Design Bootstrap -->
     <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+    @yield('additional_styles')
 </head>
-<body class="hidden-sn white-skin">
+<body class="">
 
     <!-- Loading spinner to be added when form being submitted -->
     @include('modals.loading_spinner')
@@ -37,7 +39,7 @@
         @endsection
     @endif
 
-    <div id="app" class="mt-2 pt-5">
+    <div id="app" class="">
 
         <!--navigation-->
         @include('content_parts.navigation')
@@ -51,13 +53,17 @@
 
     </div>
 
+    <!-- Social Media -->
+    @include('content_parts.social_media')
+    <!-- Social Media -->
+
     <!-- Footer -->
     @include('content_parts.footer')
     <!-- Footer -->
 
     <!-- Scripts -->
     <!-- JQuery -->
-    <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
     <!-- Bootstrap core JavaScript -->

@@ -36,10 +36,6 @@ Route::resource('administrator', 'AdminController');
 
 Route::resource('messages', 'MessageController');
 
-Route::resource('clients', 'ClientController');
-
 Route::resource('members', 'MemberController');
-
-Route::resource('services', 'ServiceController');
 
 Route::resource('news', 'NewsArticleController');

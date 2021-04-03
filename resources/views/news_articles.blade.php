@@ -2,22 +2,34 @@
 
 @section('content')
 
-    <div class="container" id="services">
+    <div class="card card-image page_header z-depth-0" style="background-image: url({{ asset('/images/photo12.png') }}); background-position: 100% 0%;">
 
-        <div class="row mt-5 mb-5">
-            <div class="col-12 col-md-10 col-lg-8 text-center mx-auto mb-5">
+        <div class="text-white text-center rgba-black-strong pb-5 px-4 content-div">
 
-                <div class="py-5" id="">
+            <div class="py-5">
 
-                    <!-- Subtitle -->
-                    <p class="my-0 pre_title">NEWS</p>
-
-                    <!-- Title -->
-                    <h2 class="display-2 text-center">Announcements</h2>
-                </div>
+                <!-- Content -->
+                <h1 class="display-3">This Is Us</h1>
             </div>
         </div>
     </div>
+
+    {{--<div class="container" id="services">--}}
+
+        {{--<div class="row mt-5 mb-5">--}}
+            {{--<div class="col-12 col-md-10 col-lg-8 text-center mx-auto mb-5">--}}
+
+                {{--<div class="py-5" id="">--}}
+
+                    {{--<!-- Subtitle -->--}}
+                    {{--<p class="my-0 pre_title">NEWS</p>--}}
+
+                    {{--<!-- Title -->--}}
+                    {{--<h2 class="display-2 text-center">Announcements</h2>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
     <div class="container-fluid" id="services">
 
@@ -67,6 +79,15 @@
                     </div>
 
                 @endif
+            </div>
+
+            <div class="col-2 mx-auto">
+
+                <div class="row" id="">
+                    <div class="d-flex justify-content-center align-items-center col-12 mx-auto" id="">
+                        <h1>No Current News Articles Listed</h1>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

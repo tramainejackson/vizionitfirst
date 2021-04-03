@@ -187,6 +187,10 @@ export default class MaterialSelectView {
 
       this.$mainLabel.addClass('active');
 
+      if (this.isSearchable) {
+        this.$searchInput.find('.search').focus();
+      }
+
       this._updateDropdownScrollTop();
     });
   }
@@ -205,6 +209,7 @@ export default class MaterialSelectView {
       }
 
       this.$materialOptionsList.find('li.selected').removeClass('selected');
+
     });
   }
 
@@ -218,9 +223,15 @@ export default class MaterialSelectView {
     // eslint-disable-next-line complexity
     this.$materialSelect.on('keydown', (e) => {
 
-      const $this = $(e.target);
-
       const isTab = e.which === this.keyCodes.tab;
+
+      if (isTab) {
+        return;
+      }
+      
+      e.preventDefault();
+
+      const $this = $(e.target);
 
       const isArrowUp = e.which === this.keyCodes.arrowUp;
       const isArrowDown = e.which === this.keyCodes.arrowDown;
@@ -235,9 +246,6 @@ export default class MaterialSelectView {
       const isDropdownExpanded = this.$materialOptionsList.is(':visible');
 
       switch (true) {
-        case isTab:
-          return this._handleTabKey($this);
-
         case !isDropdownExpanded && (isEnter || isAltWithArrowDown):
         case this.isMultiple && !isDropdownExpanded && (isArrowDown || isArrowUp):
           $this.trigger('open');
@@ -561,11 +569,6 @@ export default class MaterialSelectView {
 
       this.$toggleAll.find('[type=checkbox]').prop('checked', false);
     }
-  }
-
-  _handleTabKey($materialSelect) {
-
-    this._handleEscKey($materialSelect);
   }
 
   _handleEnterWithShiftKey($materialSelect) {

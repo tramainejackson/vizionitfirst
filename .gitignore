@@ -15,6 +15,7 @@
 /public/font
 /public/img
 /public/scss
+/public/src
 /public/css/mdb*
 /public/js/mdb*
 /storage/*.key
