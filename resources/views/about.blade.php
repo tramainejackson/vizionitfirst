@@ -16,7 +16,7 @@
 
     <div class="container-fluid">
 
-        <div class="row row-cols-2" id="">
+        <div class="row row-cols-1 row-cols-lg-2" id="">
 
             <div class="col pt-5" id="" style="padding-bottom: 32%;">
                 <div class="">
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="col position-relative" id="" style="margin-top: -30%; margin-left: 25%;">
+            <div class="col position-relative" id="about_us_page_middle_image">
                 <img class="w-100" src="{{ asset('/images/photo13.png') }}" alt="Orientation" />
             </div>
         </div>

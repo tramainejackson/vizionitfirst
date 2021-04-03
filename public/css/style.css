@@ -55,6 +55,10 @@ html, body {
     width: 100%;
 }
 
+#navbar_logo {
+    max-height: 55px;
+}
+
 .white-skin .navbar .navbar-nav .nav-item a.active-nav-item {
     color: red !important;;
 }
@@ -94,6 +98,11 @@ html, body {
 
 .double-nav .breadcrumb-dn p {
     color: #fff;
+}
+
+#about_us_page_middle_image {
+    margin-top: -30%;
+    margin-left: 25%;
 }
 
 .aboutUsBlurb {
@@ -176,6 +185,11 @@ input.form-control {
     .display-2 {
         font-size: 3.75rem;
     }
+
+    #about_us_page_middle_image {
+        margin-top: -25%;
+        margin-left: 0%;
+    }
 }
 
 @media only screen and (min-width: 576px) {
@@ -219,6 +233,11 @@ input.form-control {
     .deletePropImages {
         position: relative;
         margin: 15px 0px;
+    }
+
+    #about_us_page_middle_image {
+        margin-top: -25%;
+        margin-left: 0%;
     }
 }
 
@@ -280,12 +299,22 @@ input.form-control {
         width: -webkit-fill-available;
     }
 
+    #vizion_it_first_nav {
+        min-height: 75px;
+        position: absolute;
+    }
+
     .side-nav .logo-wrapper {
         height: 160px;
     }
 
     .side-nav .logo-wrapper img {
         padding-top: 7%;
+    }
+
+    #about_us_page_middle_image {
+        margin-top: -30%;
+        margin-left: 25%;
     }
 }
 

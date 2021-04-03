@@ -28,7 +28,8 @@ class HomeController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		return view('index');
+//		return view('index');
+		return redirect()->action('HomeController@about');
 	}
 
     /**

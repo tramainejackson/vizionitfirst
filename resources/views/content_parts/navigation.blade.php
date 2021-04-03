@@ -1,22 +1,22 @@
 <header>
     <!-- Navbar -->
-    <nav class="navbar navbar-toggleable-md navbar-expand-lg bg-dark z-depth-0 position-absolute" style="min-height: 75px;">
+    <nav class="navbar navbar-toggleable-md navbar-expand-lg bg-dark z-depth-0" id="vizion_it_first_nav" style="">
         <!-- Brand -->
-        {{--<a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">--}}
-            {{--<img src="https://mdbootstrap.com/wp-content/uploads/2018/06/logo-mdb-jquery-small.png" alt="Logo">--}}
-        {{--</a>--}}
+        <a class="navbar-brand waves-effect d-lg-none" href="#" target="_blank">
+            <img id="navbar_logo" src="{{ asset('/images/vizion_it_first_logo_lg.png') }}" alt="Logo">
+        </a>
 
         <!-- Collapse -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><i class="fas fa-align-justify"></i></span>
+            <span class="navbar-toggler-icon white-text"><i class="fas fa-align-justify"></i></span>
         </button>
 
         <!-- Links -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <!-- left -->
-            <ul class="navbar-nav nav-flex-icons align-items-center justify-content-start col-4">
+            <ul class="navbar-nav nav-flex-icons align-items-center justify-content-start flex-column flex-lg-row col-lg-4">
 
                 @if(Auth::user())
 
@@ -55,16 +55,16 @@
             </ul>
 
             <!-- middle -->
-            <ul class="navbar-nav col-4">
+            <ul class="navbar-nav d-none d-lg-flex col-lg-4">
                 <li class="nav-item flex-fill text-center">
                     <a href="{{ route('home_index') }}" class="nav-link waves-effect text-center white-text coolText3" target="" style="font-size: 36px;">Vizion It First</a>
                 </li>
             </ul>
 
             <!-- right -->
-            <ul class="navbar-nav nav-flex-icons align-items-center justify-content-end col-4">
+            <ul class="navbar-nav nav-flex-icons align-items-center justify-content-end col-12 col-lg-4">
                 <li class="nav-item flex-fill">
-                    <a href="#" class="nav-link waves-effect text-right" target="">
+                    <a href="#" class="nav-link waves-effect text-center text-lg-right" target="">
                         <button class="btn btn-lg btn-rounded btn-green mr-0" type="button">Donate</button>
                     </a>
                 </li>

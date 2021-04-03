@@ -27,7 +27,7 @@
 
     <div class="container-fluid py-5" id="" style="background-color: aliceblue;">
 
-        <div class="row row-cols-1 row-cols-md-2" id="">
+        <div class="row row-cols-1 row-cols-lg-2" id="">
 
             @if($members->count() > 0)
 
