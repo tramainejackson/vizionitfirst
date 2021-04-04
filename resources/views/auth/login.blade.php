@@ -18,7 +18,7 @@
 
         <div class="row my-5">
 
-            <div class="col-md-8 mx-auto mb-5">
+            <div class="col-12 col-lg-10 mx-auto mb-5">
 
                 <!-- Material form login -->
                 <!-- Form -->

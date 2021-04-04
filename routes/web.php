@@ -30,8 +30,6 @@ Route::get('/about', 'HomeController@about')->name('about');
 
 Route::get('/contact', 'HomeController@contact_us')->name('contact_us');
 
-Route::delete('/remove_images', 'ClientController@remove_images');
-
 Route::resource('administrator', 'AdminController');
 
 Route::resource('messages', 'MessageController');

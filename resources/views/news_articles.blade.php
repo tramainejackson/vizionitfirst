@@ -14,22 +14,22 @@
         </div>
     </div>
 
-    {{--<div class="container" id="services">--}}
+    <div class="container" id="">
 
-        {{--<div class="row mt-5 mb-5">--}}
-            {{--<div class="col-12 col-md-10 col-lg-8 text-center mx-auto mb-5">--}}
+        <div class="row mt-5 mb-5">
+            <div class="col-12 col-md-10 col-lg-8 text-center mx-auto mb-5">
 
-                {{--<div class="py-5" id="">--}}
+                <div class="py-5" id="">
 
-                    {{--<!-- Subtitle -->--}}
-                    {{--<p class="my-0 pre_title">NEWS</p>--}}
+                    <!-- Subtitle -->
+                    <p class="my-0 pre_title">NEWS</p>
 
-                    {{--<!-- Title -->--}}
-                    {{--<h2 class="display-2 text-center">Announcements</h2>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
+                    <!-- Title -->
+                    <h2 class="display-2 text-center">Announcements</h2>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container-fluid" id="services">
 
@@ -46,27 +46,39 @@
                         <!-- Grid row -->
                         <div class="row">
 
-                            <div class="col-12 my-2 text-center">
+                            <!--Grid column-->
+                            <div class="col-10 mb-4 mx-auto">
+                                <!--Card-->
+                                <div class="card">
 
-                                <!-- Title -->
-                                <h3 class="title"><a href="{{ $article->link }}" class="black-text">{{ $article->title }}</a></h3>
+                                    <!--Card image-->
+                                    <div class="view overlay">
+                                        <img src="{{ asset('/storage/images/' . $article->image) }}" class="card-img-top" alt="">
+                                        <a href="{{ route('news.show', $article->id) }}">
+                                            <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                                        </a>
+                                    </div>
+                                    <!--/.Card image-->
 
-                                <p class=""><span class="text-muted">Upload Date: </span><span class="pre_title">{{ $created_at_date->format('F d, Y') }}</span></p>
+                                    <!--Card content-->
+                                    <div class="card-body">
+                                        <!--Title-->
+                                        <h4 class="card-title"><strong>{{ $article->title }}</strong></h4>
+                                        <hr>
+                                        <!--Text-->
+                                        <p class="card-text mb-3">{{ $article->news_body }}</p>
+                                        <p class="font-small font-weight-bold dark-grey-text mb-1"><i class="fas fa-calendar-day"></i>&nbsp;{{ $created_at_date->format('F d, Y') }}</p>
+                                        <p class="text-right mb-0 font-small font-weight-bold"><a class="" href="{{ route('news.show', $article->id) }}">See More <i class="fas fa-angle-right"></i></a></p>
+                                    </div>
+                                    <!--/.Card content-->
 
-                                <div class="">
-                                    <p class="coolText2 my-3"><a href="{{ $article->link }}" class="black-text">Read More <i class="fas fa-angle-double-right"></i></a></p>
                                 </div>
+                                <!--/.Card-->
 
-                                <div class="">
-                                    <a href="{{ $article->document }}" class="btn btn-outline-green" download="{{ $article->title }}">Download Document</a>
-                                </div>
                             </div>
+                            <!--Grid column-->
                         </div>
                         <!-- Grid row -->
-
-                        @if(!$loop->last)
-                            <hr/>
-                        @endif
 
                     @endforeach
 
@@ -79,15 +91,6 @@
                     </div>
 
                 @endif
-            </div>
-
-            <div class="col-2 mx-auto">
-
-                <div class="row" id="">
-                    <div class="d-flex justify-content-center align-items-center col-12 mx-auto" id="">
-                        <h1>No Current News Articles Listed</h1>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

@@ -60,17 +60,34 @@ class NewsArticle extends Model
 	}
 
 	/**
-	 * Get the documents for the contact.
+	 * Get the image of the news article
 	 */
-	public function images() {
-		return $this->hasMany('App\ClientImage');
+	public function getImageAttribute($value) {
+
+		// Check if file exist
+		if($value !== null) {
+			$img_file = Storage::disk('public')->exists('images/' . $value);
+
+			if($img_file) {
+				$img_file = $value;
+			} else {
+				$img_file = 'empty_article.png';
+			}
+		} else {
+			$img_file = 'empty_article.png';
+		}
+
+		return $img_file;
 	}
 
 	/**
 	 * Check for active clients
 	 */
 	public function scopeShowArticles($query) {
-		return $query->where('active', '=', 1)
+		return $query->where([
+			['active', '=', 1],
+			['non_profit', '=', 1]
+		])
 			->get();
 	}
 }

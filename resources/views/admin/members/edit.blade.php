@@ -42,7 +42,7 @@
                                 <!-- Member Default Image -->
                                 <div class="row memberImg mb-3">
                                     <div class="view mx-auto" id="">
-                                        <img class="hoverable" src="{{ asset('storage/images/' . $img_file) }}" alt="Member Image" width="300">
+                                        <img class="hoverable" src="{{ asset('/storage/images/' . $member->avatar) }}" alt="Member Image" width="300">
 
                                         <div class="mask d-flex justify-content-center">
                                             <button type="button" class="btn align-self-end m-0 p-1 white">Change Image</button>
@@ -109,6 +109,28 @@
                                             <textarea id="bio" class="md-textarea form-control" name='bio' placeholder="Enter Member Bio" rows="10">{{ $member->bio }}</textarea>
 
                                             <label for="bio">Bio</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" id="">
+
+                                    <div class="col-md-12 mb-4">
+
+                                        <div class="md-form" id="">
+
+                                            <div class="form-inline pt-5 ml-0" id="">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn activeYes showClient{{ $member->active == true ? ' btn-success active' : ' btn-blue-grey' }}">
+                                                        <input type="checkbox" name="active" value="1" hidden {{ $member->active == true ? 'checked' : '' }} />Yes
+                                                    </button>
+                                                    <button type="button" class="btn activeNo showClient{{ $member->active == false ? ' btn-danger active' : ' btn-blue-grey' }}">
+                                                        <input type="checkbox" name="active" value="0" {{ $member->active == false ? 'checked' : '' }} hidden />No
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <label for="active">Active</label>
                                         </div>
                                     </div>
                                 </div>

@@ -65,15 +65,17 @@ class MemberController extends Controller
 	    ]);
 
 	    $member = new Member();
-	    $member->name   = $request->name;
-	    $member->title  = $request->title;
-	    $member->email  = $request->email;
-	    $member->phone  = $request->phone;
-	    $member->active = $request->active;
-	    $member->bio    = $request->bio;
+	    $member->name           = $request->name;
+	    $member->title          = $request->title;
+	    $member->email          = $request->email;
+	    $member->phone          = $request->phone;
+	    $member->active         = $request->active;
+	    $member->bio            = $request->bio;
+	    $member->non_profit     = 1;
+	    $member->rpmanagement   = 0;
 
 	    if($member->save()) {
-		    return back()->with('status', 'New Member Added Successfully');
+		    return redirect()->action('MemberController@index')->with('status', 'New Member Added Successfully');
 	    }
     }
 
@@ -94,19 +96,8 @@ class MemberController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Member $member) {
-	    $member_image = '';
-	    $member->avatar != '' ? $member_image = $member->avatar : $member_image = 'default';
 
-	    // Check if file exist
-	    $img_file = Storage::disk('public')->exists('images/' . $member_image);
-
-	    if($img_file) {
-		    $img_file = $member_image;
-	    } else {
-		    $img_file = 'default.png';
-	    }
-	    
-    	return view('admin.members.edit', compact('member', 'img_file'));
+    	return view('admin.members.edit', compact('member'));
     }
 
     /**
@@ -124,6 +115,7 @@ class MemberController extends Controller
 		    'title'   => 'nullable',
 		    'phone'   => 'nullable',
 		    'bio'     => 'required',
+		    'active'  => 'required',
 	    ]);
 
 	    if($request->hasFile('avatar')) {
@@ -151,8 +143,8 @@ class MemberController extends Controller
 						    $constraint->aspectRatio();
 					    });
 
-					    if($image->save(storage_path('app/public/images/' . str_ireplace(' ', '_', strtolower($member->name)) . '_sm.' . $image_ext))) {
-							$member->avatar = str_ireplace(' ', '_', strtolower($member->name) . '_sm.' . $image_ext);
+					    if($image->save(storage_path('app/public/images/' . str_ireplace(' ', '_', strtolower($member->name)) . '.' . $image_ext))) {
+							$member->avatar = str_ireplace(' ', '_', strtolower($member->name) . '.' . $image_ext);
 					    }
 
 				    } else {
@@ -184,6 +176,7 @@ class MemberController extends Controller
 	    $member->bio       = $request->bio != null ? $request->bio : null;
 	    $member->phone     = $request->phone != null ? $request->phone : null;
 	    $member->title     = $request->title != null ? $request->title : null;
+	    $member->active    = $request->active != null ? $request->active : null;
 
 	    if($member->save()) {
 		    return back()->with('status', 'Member Info Updated Successfully');
@@ -196,8 +189,9 @@ class MemberController extends Controller
      * @param  int  Member $member
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Member $member)
-    {
-        //
+    public function destroy(Member $member) {
+	    if($member->delete()) {
+		    return redirect()->action('MemberController@index')->with('status', 'Team Member Deleted Successfully');
+	    }
     }
 }

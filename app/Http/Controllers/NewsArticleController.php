@@ -93,7 +93,10 @@ class NewsArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(NewsArticle $news) {
-        //
+	    $articles   = NewsArticle::showArticles();
+	    $today      =  Carbon::now();
+
+	    return view('admin.news.show', compact('articles', 'news', 'today'));
     }
 
     /**

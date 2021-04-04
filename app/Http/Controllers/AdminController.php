@@ -86,12 +86,14 @@ class AdminController extends Controller
     public function update(Request $request, Admin $admin) {
 
 	    $this->validate($request, [
-		    'address'   => 'nullable|max:100',
-		    'city'      => 'nullable|max:100',
-		    'email'     => 'nullable|email|max:50',
-		    'zip'       => 'nullable|numeric|digits:5',
-		    'state'     => 'nullable|size:2',
-		    'phone'     => 'nullable|numeric|digits:10',
+		    'address'           => 'nullable|max:100',
+		    'city'              => 'nullable|max:100',
+		    'email'             => 'nullable|email|max:50',
+		    'zip'               => 'nullable|numeric|digits:5',
+		    'state'             => 'nullable|size:2',
+		    'phone'             => 'nullable|numeric|digits:10',
+		    'mission_statement' => 'nullable',
+		    'about_us'          => 'nullable',
 	    ]);
 
 	    $admin = Admin::first();
@@ -101,6 +103,8 @@ class AdminController extends Controller
         $admin->zip = $request->zip;
         $admin->state = $request->state;
         $admin->phone = $request->phone;
+        $admin->mission_statement = $request->mission_statement;
+        $admin->about_us = $request->about_us;
 
         if($admin->save()) {
 	        return redirect()->back()->with('status', 'Settings Updated!');

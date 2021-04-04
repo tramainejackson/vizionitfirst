@@ -21,12 +21,8 @@
             <div class="col pt-5" id="" style="padding-bottom: 32%;">
                 <div class="">
                     <!--Content-->
-                    <h2 class="mb-3 text-center font-weight-bold display-3">Mission Statement</h2>
-                    <p style="font-size: 22px;">
-                        Every great business originates from a fantastic idea.  In 2018, R P Management Firm was formed to cater to the daily private lifestyles of upscale clientele in the athletic and entertainment industries.   RPMF understands the importance of managing the daily operations of home, business and public relation obligations and events.
-                        RPMF postures its clients to have more free time to spend as they choose while maintaining and improving the legwork to keep life moving seamlessly.  RPMF also has endorsement deal opportunities it coordinates for its clients.
-                        As my favorite poet once quoted, “My mission in life is not merely to survive, but to thrive; and to do so with some passion, some compassion, some humor, and some style.” – MAYA ANGELOU
-                    </p>
+                    <h2 class="mb-3 text-center font-weight-bold display-3">Our Mission</h2>
+                    <p style="font-size: 22px;">{{ $settings->mission_statement !== null ? $settings->mission_statement : 'No Mission Statement Entered Yet' }}</p>
                 </div>
             </div>
 
@@ -34,11 +30,7 @@
                 <div class="">
                     <!--Content-->
                     <h2 class="mb-3 text-center font-weight-bold display-3">About Us</h2>
-                    <p style="font-size: 22px;">
-                        Every great business originates from a fantastic idea.  In 2018, R P Management Firm was formed to cater to the daily private lifestyles of upscale clientele in the athletic and entertainment industries.   RPMF understands the importance of managing the daily operations of home, business and public relation obligations and events.
-                        RPMF postures its clients to have more free time to spend as they choose while maintaining and improving the legwork to keep life moving seamlessly.  RPMF also has endorsement deal opportunities it coordinates for its clients.
-                        As my favorite poet once quoted, “My mission in life is not merely to survive, but to thrive; and to do so with some passion, some compassion, some humor, and some style.” – MAYA ANGELOU
-                    </p>
+                    <p style="font-size: 22px;">{{ $settings->about_us !== null ? $settings->about_us : 'No About Us Statement Entered Yet' }}</p>
                 </div>
             </div>
 

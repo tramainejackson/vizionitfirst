@@ -30,7 +30,7 @@
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
 
-                <div class="col-12 col-lg-8 my-3 mx-auto" id="">
+                <div class="col-12 col-lg-10 my-3 mx-auto" id="">
 
                     <div class="card">
 
@@ -57,7 +57,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-8 my-3 mx-auto" id="">
+                <div class="col-12 col-lg-10 my-3 mx-auto" id="">
 
                     <div class="card">
 
@@ -84,7 +84,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-8 my-3 mx-auto" id="">
+                <div class="col-12 col-lg-10 my-3 mx-auto" id="">
 
                     <div class="card">
 

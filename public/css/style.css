@@ -59,6 +59,10 @@ html, body {
     max-height: 55px;
 }
 
+a.nav-link.waves-effect.white-text:hover {
+    color: #00bcd4 !important;
+}
+
 .white-skin .navbar .navbar-nav .nav-item a.active-nav-item {
     color: red !important;;
 }
