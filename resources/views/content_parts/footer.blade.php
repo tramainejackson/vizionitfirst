@@ -1,109 +1,84 @@
-<footer class="page-footer font-small unique-color-dark p-0">
+<!-- Footer -->
+<footer class="page-footer font-small blue-grey lighten-5">
 
-    <!-- Footer Text -->
-    <div class="container-fluid text-center text-md-left">
+    <!-- Footer Links -->
+    <div class="container pt-5">
 
-        <div class="row">
-            <div class="col-8 mx-auto" id="">
-                <hr/>
-            </div>
-        </div>
-
-        <div class="row mb-5">
+        <!-- Grid row -->
+        <div class="row justify-content-between mt-3 dark-grey-text">
 
             <!-- Grid column -->
-            <div class="col-12 col-md-8 mx-auto">
+            <div class="col-12 col-md-4 mb-4">
 
-                <ul class="nav nav-tabs mb-3">
+                <!-- Content -->
+                <h6 class="text-uppercase font-weight-bold">{{ config('app.name') }}</h6>
+                <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
+                    consectetur
+                    adipisicing elit.</p>
 
-                    @if(Auth::user())
-
-                        <li class="nav-item">
-                            <a class="nav-link{{ url()->current() == url('') ? ' active': '' }}" href="{{ route('home_index') }}">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link{{ substr_count(url()->current(),'administrator') > 0 ? ' active': '' }}" href="{{ route('administrator.index') }}">Admin</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link{{ substr_count(url()->current(),'news') > 0 ? ' active': '' }}" href="{{ route('news.index') }}">Events</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link{{ substr_count(url()->current(),'members') > 0 ? ' active': '' }}" href="{{ route('members.index') }}">Members</a>
-                        </li>
-
-                        {{--<li class="nav-item">--}}
-                            {{--<a class="nav-link{{ substr_count(url()->current(),'messages') > 0 ? ' active': '' }}" href="{{ route('messages.index') }}">Messages</a>--}}
-                        {{--</li>--}}
-
-                        <li class="nav-item d-none d-sm-flex">
-                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    @else
-                        <li class="nav-item">
-                            <a class="nav-link{{ url()->current() == url('') ? ' active': '' }}" href="{{ route('home_index') }}">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link{{ substr_count(url()->current(),'news') > 0 ? ' active': '' }}" href="{{ route('news.index') }}">Events</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link{{ substr_count(url()->current(),'members') > 0 ? ' active': '' }}" href="{{ route('members.index') }}">Members</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        </li>
-                    @endif
-                </ul>
-
-                <ul class="contact-icons list-unstyled text-left">
-                    <li>
-                        <p class="m-0 p-0">{{ $settings->concat_address() }}</p>
-                    </li>
-
-                    @php
-                        $contact_str = '';
-
-                        if($settings->phone != '') {
-                            $contact_str .= $settings->phone;
-
-                            if($settings->email != '') {
-                                $contact_str .= ' | ' . $settings->email;
-                            }
-                        } else {
-                            if($settings->email != '') {
-                                $contact_str .= $settings->email;
-                            } else {
-                                $contact_str = null;
-                            }
-                        }
-                    @endphp
-
-                    @if($contact_str != null)
-                        <li>
-                            <p class="m-0 p-0">{{ $contact_str }}</p>
-                        </li>
-                    @endif
-                </ul>
             </div>
             <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-12 col-md-3 pl-md-5 mx-auto mb-4">
+
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+                <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+
+                @if(Auth::user())
+                    <p>
+                        <a class="dark-grey-text" href="{{ route('administrator.index') }}">Admin</a>
+                    </p>
+                    <p>
+                        <a class="dark-grey-text" href="{{ route('news.index') }}">Events</a>
+                    </p>
+                    <p>
+                        <a class="dark-grey-text" href="{{ route('members.index') }}">Members</a>
+                    </p>
+                    <p>
+                        <a class="dark-grey-text" href="#!">Messages</a>
+                    </p>
+                @else
+                    <p>
+                        <a class="dark-grey-text" href="{{ route('about') }}">Our Mission</a>
+                    </p>
+                    <p>
+                        <a class="dark-grey-text" href="{{ route('members.index') }}">The Team</a>
+                    </p>
+                    <p>
+                        <a class="dark-grey-text" href="{{ route('about') }}">Contact Us</a>
+                    </p>
+                    <p>
+                        <a class="dark-grey-text" href="{{ route('news.index') }}">Events/News</a>
+                    </p>
+                @endif
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-12 col-md mx-auto mb-md-0 mb-4">
+
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+
+                <p><i class="fas fa-home mr-3"></i> {{ $settings->city . ', ' . $settings->state . ' ' . $settings->zip }}</p>
+                <p><i class="fas fa-envelope mr-3"></i> {{ $settings->email }}</p>
+                <p><i class="fas fa-phone mr-3"></i> {{ $settings->concat_phone() }}</p>
+
+            </div>
+            <!-- Grid column -->
+
         </div>
+        <!-- Grid row -->
 
     </div>
-    <!-- Footer Text -->
+    <!-- Footer Links -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <div class="footer-copyright text-center py-3 unique-color-dark">© 2021 Copyright:
         <span class=""> Tramaine Jackson Tech LLC</span>
     </div>
     <!-- Copyright -->
