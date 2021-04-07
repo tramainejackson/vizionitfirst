@@ -30,15 +30,6 @@
     <!-- Loading spinner to be added when form being submitted -->
     @include('modals.loading_spinner')
 
-    <!-- Redirect messages -->
-    @if(session('status'))
-        @section('additional_scripts')
-            <script type="text/javascript">
-                toastr.success("{{ session('status') }}", "", {showMethod: 'slideDown'});
-            </script>
-        @endsection
-    @endif
-
     <div id="app" class="">
 
         <!--navigation-->
@@ -71,6 +62,13 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/myjs.js') }}"></script>
+
+    <!-- Redirect messages -->
+    @if(session('status'))
+        <script type="text/javascript">
+            toastr.success("{{ session('status') }}", "", {showMethod: 'slideDown'});
+        </script>
+    @endif
 
     @yield('additional_scripts')
 

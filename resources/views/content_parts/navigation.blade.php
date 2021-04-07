@@ -1,3 +1,11 @@
+@section('additional_scripts')
+    <script type="text/javascript">
+        $("body").on("click", ".donateBtn", function(e) {
+            toastr.warning('Coming Soon!', '', {showDuration: 50000});
+        });
+    </script>
+@endsection
+
 <header>
     <!-- Navbar -->
     <nav class="navbar navbar-toggleable-md navbar-expand-lg bg-dark z-depth-0" id="vizion_it_first_nav" style="">
@@ -65,7 +73,7 @@
             <ul class="navbar-nav nav-flex-icons align-items-center justify-content-end col-12 col-lg-4">
                 <li class="nav-item flex-fill">
                     <a href="#" class="nav-link waves-effect text-center text-lg-right" target="">
-                        <button class="btn btn-lg btn-rounded btn-green mr-0" type="button">Donate</button>
+                        <button class="btn btn-lg btn-rounded btn-green mr-0 donateBtn" type="button">Donate</button>
                     </a>
                 </li>
             </ul>
