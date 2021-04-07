@@ -1,165 +1,137 @@
 @extends('layouts.app')
 
+@section('additional_styles')
+    <style>
+        /* Required for full background image */
+
+        html,
+        body,
+        .view {
+            height: 100%;
+        }
+
+        @media (max-width: 799px) {
+            html,
+            body,
+            .view {
+                height: 1100px;
+            }
+        }
+        @media (min-width: 800px) {
+            html,
+            body,
+            .view {
+                min-height: 1000px;
+            }
+        }
+        @media (min-width: 992px) {
+            html,
+            body,
+            .view {
+                min-height: 1000px;
+            }
+        }
+
+    </style>
+@endsection
+
 @section('content')
 
-    <div class="container" id="services">
+    <!-- Full Page Intro -->
+    <div class="view" style="background-image: url({{ asset('/storage/images/photo12.png') }}); background-repeat: no-repeat; background-size: cover; background-position: inherit;">
+        <!-- Mask & flexbox options-->
+        <div class="mask rgba-indigo-strong d-flex justify-content-center align-items-center">
+            <!-- Content -->
+            <div class="container">
+                <!--Grid row-->
+                <div class="row pt-lg-5 mt-lg-5">
+                    <!--Grid column-->
+                    <div class="col-12 col-md-10 col-lg-5 col-xl-5 mb-4 mr-md-5 mx-auto">
+                        <!--Form-->
+                        <div class="card wow fadeInRight" data-wow-delay="0.3s">
+                            <div class="card-body z-depth-2">
+                                <!--Header-->
+                                <div class="text-center">
+                                    <h3 class="dark-grey-text">
+                                        <strong>Come Talk To Us:</strong>
+                                    </h3>
+                                    <hr>
+                                </div>
+                                <!--Body-->
+                                <div class="md-form">
+                                    <i class="fa fa-user prefix grey-text"></i>
 
-        <div class="row mt-5 mb-5">
-            <div class="col-12 col-md-8 text-center mx-auto mb-5">
+                                    <input type="text" name="name" id="materialLoginFormPassword" class="form-control" value="{{ old('name') }}" {{ $errors->has('name') ? 'autofocus' : ''}}>
+                                    <label for="materialLoginFormPassword">Name</label>
 
-                <div class="py-5" id="">
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="md-form">
+                                    <i class="fa fa-envelope prefix grey-text"></i>
 
-                    <!-- Subtitle -->
-                    <p class="my-0 pre_title">Contact</p>
+                                    <input type="email" name="email" id="materialLoginFormEmail" class="form-control" value="{{ old('email') }}" {{ $errors->has('email') ? 'email' : ''}}>
+                                    <label for="materialLoginFormEmail">E-mail</label>
 
-                    <!-- Title -->
-                    <h2 class="display-2 text-center">Let's Chat</h2>
-                </div>
-            </div>
-        </div>
-    </div>
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <!--Textarea with icon prefix-->
+                                <div class="md-form">
+                                    <i class="fa fa-pencil-alt prefix grey-text"></i>
 
-    <div class="container fluid" id="chat">
+                                    <textarea name="message" id="form21" class="md-textarea form-control" rows="4" {{ $errors->has('message') ? 'autofocus' : ''}}>{{ old('message') }}</textarea>
+                                    <label for="materialLoginFormEmail">How Can We Help</label>
 
-        <div class="row mt-3 mb-5">
+                                    @if ($errors->has('message'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('message') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
 
-            <div class="col-12 col-lg-7 mb-4">
-                <!--  Form login -->
-                <div class="card">
-
-                    <h5 class="card-header info-color white-text text-center py-4">
-                        <strong>Talk To Me</strong>
-                    </h5>
-
-                    <!--Card content-->
-                    <div class="card-body px-lg-5 pt-0">
-
-                        <!-- Form -->
-                        <form action="{{ route('messages.store') }}" method="POST" class="text-center" style="color: #757575;">
-                            {{ csrf_field() }}
-
-                            <!-- Name -->
-                            <div class="md-form">
-                                <div class="form-row" id="">
-                                    <div class="col" id="">
-                                        <input type="text" name="first_name" id="materialLoginFormPassword" class="form-control" value="{{ old('first_name') }}">
-                                        <label for="materialLoginFormPassword">First Name</label>
-
-                                        @if ($errors->has('first_name'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('first_name') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                    <div class="col" id="">
-                                        <input type="text" name="last_name" id="materialLoginFormPassword" class="form-control" value="{{ old('last_name') }}">
-                                        <label for="materialLoginFormPassword">Last Name</label>
-
-                                        @if ($errors->has('last_name'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('last_name') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-indigo">Send</button>
                                 </div>
                             </div>
-
-                            <!-- Email -->
-                            <div class="md-form">
-                                <input type="email" name="email" id="materialLoginFormEmail" class="form-control" value="{{ old('email') }}">
-                                <label for="materialLoginFormEmail">E-mail</label>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-
-                            <!-- Phone -->
-                            <div class="md-form">
-                                <input type="text" name="phone" id="materialLoginFormEmail" class="form-control" value="{{ old('phone') }}">
-                                <label for="materialLoginFormEmail">Phone (Optional)</label>
-
-                                @if ($errors->has('phone'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('phone') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-
-                            <!-- Reason -->
-                            <div class="md-form">
-                                <div class="form-row" id="">
-                                    <div class="col-12" id="">
-                                        <p class="m-0 text-left font-weight-bold {{ $errors->has('reason') ? ' has-error' : '' }}">Reason for Inquiry</p>
-                                    </div>
-                                    <div class="col-12" id="">
-                                        @foreach($message_reasons as $message_reason)
-                                            <div class="form-check text-left">
-                                                <input type="checkbox" name="reason[]" value="{{ $message_reason->reason }}" class="form-check-input" id="{{ $message_reason->reason }}">
-                                                <label class="form-check-label" for="{{ $message_reason->reason }}">{{ $message_reason->reason }}</label>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Message -->
-                            <div class="md-form my-5">
-                                <textarea name="message" id="form21" class="md-textarea form-control" rows="4">{{ old('message') }}</textarea>
-
-                                <label for="materialLoginFormEmail">How Can We Help</label>
-
-                                @if ($errors->has('message'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('message') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-
-                            <!-- Sign in button -->
-                            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Submit</button>
-
-                        </form>
-                        <!-- Form -->
+                        </div>
+                        <!--/.Form-->
                     </div>
-                </div>
-                <!-- Form login -->
-            </div>
+                    <!--Grid column-->
 
-            <div class="col-1 mb-4"></div>
+                    <!--Grid column-->
+                    <div class="col-12 col-md-10 col-lg-6 mb-5 mt-lg-0 ml-lg-0 ml-md-5 mt-5 white-text text-center text-lg-left wow fadeInLeft pl-lg-5" data-wow-delay="0.3s">
+                        <div class="" id="">
+                            <h4 class="h4 h4-responsive font-weight-bold text-underline" style="font-size: xx-large;">Address</h4>
+                            <p class="mb-0" style="font-size: x-large;">{{ $settings->address }}</p>
+                            <p class="mb-0" style="font-size: x-large;">{{ $settings->city . ', ' . $settings->state . ' ' . $settings->zip }}</p>
+                            <p class="mb-4 pb-2" style="font-size: x-large;">United States</p>
+                        </div>
 
-            <div class="col-12 col-lg-4 mb-4">
-                <h1 class="h1 mb-4">Contact</h1>
+                        <div class="" id="">
+                            <h4 class="h4 h4-responsive font-weight-bold text-underline" style="font-size: xx-large;">Phone</h4>
+                            <p class="mb-4 pb-2" style="font-size: x-large;">{{ $settings->concat_phone() != null ? $settings->concat_phone() : 'No Phone Number' }}</p>
+                        </div>
 
-                <div class="" id="">
-                    <p class="pre_title mb-2"><i class="fas fa-map-marker"></i> Location</p>
-
-                    <h3 class="h3 mb-3">West New York, NJ 07093</h3>
-                </div>
-
-                <div class="" id="">
-                    <p class="pre_title mb-2">Office Hours</p>
-
-                    <h3 class="h3 mb-0">Monday - Sunday</h3>
-                    <h3 class="h3 mb-3">9AM - 9PM</h3>
-                </div>
-
-                @if($settings->phone != null || $settings->email != null)
-                    <div class="" id="">
-                        <p class="pre_title mb-2"><i class="fas fa-reply"></i> Contact</p>
-
-                        @if($settings->phone != null)
-                            <h3 class="h3 mb-0">{{ $settings->phone }}</h3>
-                        @endif
-
-                        @if($settings->email != null)
-                            <h3 class="h3 mb-3">{{ $settings->email }}</h3>
-                        @endif
+                        <div class="" id="">
+                            <h4 class="h4 h4-responsive font-weight-bold text-underline" style="font-size: xx-large;">Email</h4>
+                            <p style="font-size: x-large;">{{ $settings->email != null ? $settings->email : 'No Email Address' }}</p>
+                        </div>
                     </div>
-                @endif
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
             </div>
+            <!-- Content -->
         </div>
+        <!-- Mask & flexbox options-->
     </div>
+    <!-- Full Page Intro -->
+
 @endsection

@@ -40,7 +40,7 @@
                         <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item white-text" href="{{ route('about') }}">Our Mission</a>
                             <a class="dropdown-item white-text" href="{{ route('members.index') }}">The Team</a>
-                            <a class="dropdown-item white-text" href="{{ route('about') }}">Contact Us</a>
+                            <a class="dropdown-item white-text" href="{{ route('contact_us') }}">Contact Us</a>
                         </div>
                     </li>
 

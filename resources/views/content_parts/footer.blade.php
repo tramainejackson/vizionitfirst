@@ -48,10 +48,10 @@
                         <a class="dark-grey-text" href="{{ route('members.index') }}">The Team</a>
                     </p>
                     <p>
-                        <a class="dark-grey-text" href="{{ route('about') }}">Contact Us</a>
+                        <a class="dark-grey-text" href="{{ route('news.index') }}">Events/News</a>
                     </p>
                     <p>
-                        <a class="dark-grey-text" href="{{ route('news.index') }}">Events/News</a>
+                        <a class="dark-grey-text" href="{{ route('contact_us') }}">Contact Us</a>
                     </p>
                 @endif
             </div>

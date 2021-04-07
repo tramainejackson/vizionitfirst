@@ -1,4 +1,4 @@
-<div class="stylish-color-dark py-3 d-flex align-items-center justify-content-between justify-content-lg-center" id="social_media_sec">
+<div class="stylish-color-dark py-3 d-flex align-items-center justify-content-between justify-content-lg-center flex-column" id="social_media_sec">
 
     <div class="px-3" id="">
         <h2 class="h2 h2-responsive white-text">Get Connected With Us On Social Media</h2>
