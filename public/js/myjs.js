@@ -23,6 +23,9 @@ $(document).ready(function() {
     // Since fixed height for nav, add nav height to container
     $('#content_container').css({'margin-top':$('nav').height() + 'px'});
 
+    // Since fixed height for nav, add nav height to container
+    $('#enter_btn').css({'left':((screenWidth/2) - $('#enter_btn').outerWidth()/2) + 'px'});
+
     // Animations initialization
     new WOW().init();
 

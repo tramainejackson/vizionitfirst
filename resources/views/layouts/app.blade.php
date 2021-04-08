@@ -62,6 +62,12 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/myjs.js') }}"></script>
+    <!-- Remove once donate info received -->
+    <script type="text/javascript">
+        $("body").on("click", ".donateBtn", function(e) {
+            toastr.warning('Coming Soon!', '', {showDuration: 5000});
+        });
+    </script>
 
     <!-- Redirect messages -->
     @if(session('status'))

@@ -1,11 +1,3 @@
-@section('additional_scripts')
-    <script type="text/javascript">
-        $("body").on("click", ".donateBtn", function(e) {
-            toastr.warning('Coming Soon!', '', {showDuration: 50000});
-        });
-    </script>
-@endsection
-
 <header>
     <!-- Navbar -->
     <nav class="navbar navbar-toggleable-md navbar-expand-lg bg-dark z-depth-0" id="vizion_it_first_nav" style="">
