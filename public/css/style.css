@@ -104,10 +104,10 @@ a.nav-link.waves-effect.white-text:hover {
     color: #fff;
 }
 
-#about_us_page_middle_image {
-    margin-top: -30%;
-    margin-left: 25%;
-}
+/*#about_us_page_middle_image {*/
+    /*margin-top: -30%;*/
+    /*margin-left: 25%;*/
+/*}*/
 
 .aboutUsBlurb {
     font-size: 135%;
@@ -190,10 +190,10 @@ input.form-control {
         font-size: 3.75rem;
     }
 
-    #about_us_page_middle_image {
-        margin-top: -25%;
-        margin-left: 0%;
-    }
+    /*#about_us_page_middle_image {*/
+        /*margin-top: -25%;*/
+        /*margin-left: 0%;*/
+    /*}*/
 }
 
 @media only screen and (min-width: 576px) {
@@ -239,10 +239,10 @@ input.form-control {
         margin: 15px 0px;
     }
 
-    #about_us_page_middle_image {
-        margin-top: -25%;
-        margin-left: 0%;
-    }
+    /*#about_us_page_middle_image {*/
+        /*margin-top: -25%;*/
+        /*margin-left: 0%;*/
+    /*}*/
 }
 
 @media only screen and (min-width: 768px) {
@@ -316,10 +316,10 @@ input.form-control {
         padding-top: 7%;
     }
 
-    #about_us_page_middle_image {
-        margin-top: -30%;
-        margin-left: 25%;
-    }
+    /*#about_us_page_middle_image {*/
+        /*margin-top: -30%;*/
+        /*margin-left: 25%;*/
+    /*}*/
 }
 
 @media (min-width: 1200px) {
