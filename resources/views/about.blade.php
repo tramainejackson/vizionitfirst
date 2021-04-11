@@ -9,7 +9,7 @@
 
         <div class="row row-cols-1" id="">
 
-            <div class="col pt-5 mb-5" id="" style="">
+            <div class="col-12 col-md-10 col-lg-8 pt-5 mb-5 mx-auto" id="" style="">
                 <div class="">
                     <!--Content-->
                     <h2 class="mb-3 text-center font-weight-bold display-3">Our Mission</h2>

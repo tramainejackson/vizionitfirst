@@ -61,8 +61,8 @@
                                 <div class="md-form">
                                     <i class="fa fa-user prefix grey-text"></i>
 
-                                    <input type="text" name="name" id="materialLoginFormPassword" class="form-control" value="{{ old('name') }}" {{ $errors->has('name') ? 'autofocus' : ''}}>
-                                    <label for="materialLoginFormPassword">Name</label>
+                                    <input type="text" name="name" id="form_name" class="form-control" value="{{ old('name') }}" {{ $errors->has('name') ? 'autofocus' : ''}}>
+                                    <label for="form_name">Name</label>
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -73,8 +73,8 @@
                                 <div class="md-form">
                                     <i class="fa fa-envelope prefix grey-text"></i>
 
-                                    <input type="email" name="email" id="materialLoginFormEmail" class="form-control" value="{{ old('email') }}" {{ $errors->has('email') ? 'email' : ''}}>
-                                    <label for="materialLoginFormEmail">E-mail</label>
+                                    <input type="email" name="email" id="form_email" class="form-control" value="{{ old('email') }}" {{ $errors->has('email') ? 'email' : ''}}>
+                                    <label for="form_email">E-mail</label>
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -86,8 +86,8 @@
                                 <div class="md-form">
                                     <i class="fa fa-pencil-alt prefix grey-text"></i>
 
-                                    <textarea name="message" id="form21" class="md-textarea form-control" rows="4" {{ $errors->has('message') ? 'autofocus' : ''}}>{{ old('message') }}</textarea>
-                                    <label for="materialLoginFormEmail">How Can We Help</label>
+                                    <textarea name="message" id="form_message" class="md-textarea form-control" rows="4" {{ $errors->has('message') ? 'autofocus' : ''}}>{{ old('message') }}</textarea>
+                                    <label for="form_message">How Can We Help</label>
 
                                     @if ($errors->has('message'))
                                         <span class="help-block">
