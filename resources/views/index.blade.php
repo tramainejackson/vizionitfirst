@@ -5,6 +5,13 @@
         #app, #intro {
             min-height: inherit;
         }
+        #intro {
+            min-height: inherit;
+            background-image: url("{{ asset('/images/vizion_it_first_logo_lg.png') }}");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+        }
         nav.bg-dark {
             background-color: transparent !important;
         }
@@ -49,6 +56,11 @@
                 top: 20%
             }
 
+            #intro {
+                background-size: 80% 80%;
+                background-position: 50% 10%;
+            }
+
             @keyframes scale_btn {
                 0%   {top: 0%}
                 100% {top: 20%;}
@@ -58,6 +70,11 @@
         @media only screen and (min-width: 600px) {
             #enter_btn {
                 top: 20%
+            }
+
+            #intro {
+                background-size: 80% 80%;
+                background-position: 50% 10%;
             }
 
             @keyframes scale_btn {
@@ -76,6 +93,13 @@
                 100% {top: 45%;}
             }
         }
+
+        @media only screen and (min-width: 992px) {
+            #intro {
+                background-size: 40% 80%;
+                background-position: center center;
+            }
+        }
     </style>
 @endsection
 
@@ -90,7 +114,7 @@
     <div id="intro" class="view">
 
         <div class="mask d-flex align-items-center justify-content-center">
-            <img id="home_index_image" class="mx-auto mt-n5" src="{{ asset('/images/vizion_it_first_logo_lg.png') }}" alt="Logo">
+            {{--<img id="home_index_image" class="mx-auto mt-n5" src="{{ asset('/images/vizion_it_first_logo_lg.png') }}" alt="Logo">--}}
 
             <a href="{{ route('about') }}" id="enter_btn" class="btn btn-lg btn-rounded white-text position-absolute z-depth-5" data-wow-delay="1.0s">Enter Site</a>
         </div>

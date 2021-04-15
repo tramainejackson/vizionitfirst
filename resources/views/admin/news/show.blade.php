@@ -42,10 +42,10 @@
                 <h1 class="font-weight-bold">{{ $news->title }}</h1>
 
                 @if($news->document !== null)
-                    <h3 class="dark-grey-text">There is a documents associated with this news announcement.</h3>
+                    <h3 class="dark-grey-text">There is a downloadable file associated with this news announcement. Click the button below to download the file.</h3>
 
                     <div class="text-center" id="">
-                        <a href="{{ $news->document }}" class="btn btn-outline-dark-green" target="_blank">Download Document</a>
+                        <a href="{{ $news->document }}" class="btn btn-outline-dark-green" target="_blank">Download File</a>
                     </div>
                 @endif
 
