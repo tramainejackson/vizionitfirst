@@ -2,7 +2,11 @@
 
 @section('content')
 
-    <div class="container" id="clients">
+    {{--Add Jumbotron--}}
+    @section('jumbotron_title', 'The Inbox')
+    @include('content_parts.jumbotron')
+
+    <div class="container" id="">
 
         <div class="row mt-5 mb-5">
             <div class="col-12 col-md-8 text-center mx-auto mb-5">

@@ -2,17 +2,9 @@
 
 @section('content')
 
-    <div class="card card-image page_header z-depth-0" style="background-image: url({{ asset('/images/photo12.png') }}); background-position: 100% 0%;">
-
-        <div class="text-white text-center rgba-black-strong pb-5 px-4 content-div">
-
-            <div class="py-5">
-
-                <!-- Content -->
-                <h1 class="display-3">This Is Us</h1>
-            </div>
-        </div>
-    </div>
+    {{--Add Jumbotron--}}
+    @section('jumbotron_title', 'Our Events')
+    @include('content_parts.jumbotron')
 
     <div class="container-fluid">
 

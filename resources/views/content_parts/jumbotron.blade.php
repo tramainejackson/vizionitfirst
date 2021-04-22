@@ -5,7 +5,7 @@
         <div class="py-5">
 
             <!-- Content -->
-            <h1 class="display-3">This Is Us</h1>
+            <h1 class="display-3">@yield('jumbotron_title', 'This Is Us')</h1>
         </div>
         
         <div class="position-relative" id="">

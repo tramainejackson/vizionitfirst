@@ -38,7 +38,15 @@
                         <a class="dark-grey-text" href="{{ route('members.index') }}">Members</a>
                     </p>
                     <p>
-                        <a class="dark-grey-text" href="#!">Messages</a>
+                        <a class="dark-grey-text" href="{{ route('messages.index') }}">Messages</a>
+                    </p>
+
+                    <p>
+                        <a href="{{ route('logout') }}" class="dark-grey-text" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </p>
                 @else
                     <p>

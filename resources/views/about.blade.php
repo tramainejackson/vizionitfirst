@@ -3,6 +3,7 @@
 @section('content')
 
     {{--Add Jumbotron--}}
+    @section('jumbotron_title', 'Mission Possible')
     @include('content_parts.jumbotron')
 
     <div class="container-fluid">

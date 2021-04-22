@@ -67,6 +67,13 @@
             }
         }
 
+        @media only screen and (max-width: 500px) {
+            #intro {
+                background-size: 90% 50%;
+                background-position: 50% 35%;
+            }
+        }
+
         @media only screen and (min-width: 600px) {
             #enter_btn {
                 top: 20%

@@ -1,6 +1,6 @@
 <header>
     <!-- Navbar -->
-    <nav class="navbar navbar-toggleable-md navbar-expand-lg bg-dark z-depth-0" id="vizion_it_first_nav" style="">
+    <nav class="navbar navbar-toggleable-md navbar-expand-lg bg-white z-depth-0" id="vizion_it_first_nav" style="">
         <!-- Brand -->
         <a class="navbar-brand waves-effect d-lg-none" href="#" target="_blank">
             <img id="navbar_logo" src="{{ asset('/images/vizion_it_first_logo_lg.png') }}" alt="Logo">
@@ -9,7 +9,7 @@
         <!-- Collapse -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon white-text"><i class="fas fa-align-justify"></i></span>
+            <span class="navbar-toggler-icon blue-ic"><i class="fas fa-align-justify"></i></span>
         </button>
 
         <!-- Links -->
@@ -21,35 +21,39 @@
                 @if(Auth::user())
 
                     <li class="nav-item" style="font-size: 1.5rem;">
-                        <a class="nav-link waves-effect white-text" href="{{ route('administrator.index') }}">Admin</a>
+                        <a class="nav-link waves-effect" href="{{ route('administrator.index') }}">Admin</a>
                     </li>
 
                     <li class="nav-item" style="font-size: 1.5rem;">
-                        <a class="nav-link waves-effect white-text" href="{{ route('news.index') }}">Events</a>
+                        <a class="nav-link waves-effect" href="{{ route('news.index') }}">Events</a>
                     </li>
 
                     <li class="nav-item" style="font-size: 1.5rem;">
-                        <a class="nav-link waves-effect white-text" href="{{ route('members.index') }}">Members</a>
+                        <a class="nav-link waves-effect" href="{{ route('members.index') }}">Members</a>
+                    </li>
+
+                    <li class="nav-item" style="font-size: 1.5rem;">
+                        <a class="nav-link waves-effect" href="{{ route('messages.index') }}">Messages</a>
                     </li>
 
                 @else
 
                     <li class="nav-item dropdown" style="font-size: 1.5rem;">
-                        <a class="nav-link dropdown-toggle white-text" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                        <a class="nav-link dropdown-toggle blue-ic" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
 
                         <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item white-text" href="{{ route('about') }}">Our Mission</a>
-                            <a class="dropdown-item white-text" href="{{ route('members.index') }}">The Team</a>
-                            <a class="dropdown-item white-text" href="{{ route('contact_us') }}">Contact Us</a>
+                            <a class="dropdown-item" href="{{ route('about') }}">Our Mission</a>
+                            <a class="dropdown-item" href="{{ route('members.index') }}">The Team</a>
+                            <a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a>
                         </div>
                     </li>
 
                     <li class="nav-item" style="font-size: 1.5rem;">
-                        <a class="nav-link waves-effect white-text" href="{{ route('news.index') }}">Events/News</a>
+                        <a class="nav-link waves-effect blue-ic" href="{{ route('news.index') }}">Events/News</a>
                     </li>
 
                     <li class="nav-item" style="font-size: 1.5rem;">
-                        <a class="nav-link waves-effect white-text" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link waves-effect blue-ic" href="{{ route('login') }}">Login</a>
                     </li>
                 @endif
             </ul>
@@ -57,7 +61,7 @@
             <!-- middle -->
             <ul class="navbar-nav d-none d-lg-flex col-lg-4">
                 <li class="nav-item flex-fill text-center">
-                    <a href="{{ route('home_index') }}" class="nav-link waves-effect text-center white-text coolText3" target="" style="font-size: 36px;">Vizion It First</a>
+                    <a href="{{ route('home_index') }}" class="nav-link waves-effect text-center white-text coolText3 blue-ic" target="" style="font-size: 36px;">Vizion It First</a>
                 </li>
             </ul>
 
