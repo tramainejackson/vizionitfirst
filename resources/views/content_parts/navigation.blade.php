@@ -2,7 +2,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-toggleable-md navbar-expand-lg bg-white z-depth-0" id="vizion_it_first_nav" style="">
         <!-- Brand -->
-        <a class="navbar-brand waves-effect d-lg-none" href="#" target="_blank">
+        <a class="navbar-brand waves-effect d-lg-none" href="/">
             <img id="navbar_logo" src="{{ asset('/images/vizion_it_first_logo_lg.png') }}" alt="Logo">
         </a>
 
