@@ -12,8 +12,11 @@
             background-size: contain;
             background-position: center center;
         }
-        nav.bg-dark {
+        nav.bg-white {
             background-color: transparent !important;
+        }
+        nav.navbar button.navbar-toggler span.navbar-toggler-icon.blue-ic {
+            color: transparent !important;
         }
         ul.navbar-nav:nth-of-type(1) .nav-item, ul.navbar-nav:nth-of-type(2) .nav-item, a.navbar-brand {
             display: none !important;

@@ -1,11 +1,11 @@
 <div class="card card-image page_header z-depth-0" style="background-image: url({{ asset('/images/photo12.png') }}); background-position: 100% 0%; border-radius: 0;">
 
-    <div class="text-white text-center rgba-black-strong pb-5 px-4 content-div">
+    <div class="text-white text-center rgba-white-strong pb-5 px-4 content-div">
 
         <div class="py-5">
 
             <!-- Content -->
-            <h1 class="display-3">@yield('jumbotron_title', 'This Is Us')</h1>
+            <h1 class="display-3 black-text">@yield('jumbotron_title', 'This Is Us')</h1>
         </div>
         
         <div class="position-relative" id="">

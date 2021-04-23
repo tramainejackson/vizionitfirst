@@ -109,7 +109,6 @@ class NewsArticle extends Model
 		return $query->where([
 			['active', '=', 1],
 			['non_profit', '=', 1]
-		])
-			->get();
+		])->orderBy('updated_at', 'desc')->get();
 	}
 }
