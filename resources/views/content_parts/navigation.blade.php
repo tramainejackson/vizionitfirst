@@ -61,7 +61,9 @@
             <!-- middle -->
             <ul class="navbar-nav d-none d-lg-flex col-lg-4">
                 <li class="nav-item flex-fill text-center">
-                    <a href="{{ route('home_index') }}" class="nav-link waves-effect text-center white-text coolText3 blue-ic" target="" style="font-size: 36px;">Vizion It First</a>
+                    <a href="{{ route('home_index') }}" class="nav-link waves-effect text-center white-text coolText3 blue-ic" target="" style="">
+                        <img src="{{ asset('/images/vizion_it_first_logo_lg.png') }}" alt="Logo" style="max-height: 70px">
+                    </a>
                 </li>
             </ul>
 

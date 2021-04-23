@@ -123,11 +123,13 @@
     <!--Mask-->
     <div id="intro" class="view">
 
-        <div class="mask d-flex align-items-center justify-content-center">
-            {{--<img id="home_index_image" class="mx-auto mt-n5" src="{{ asset('/images/vizion_it_first_logo_lg.png') }}" alt="Logo">--}}
+        <a href="{{ route('about') }}" id="" class="">
+            <div class="mask d-flex align-items-center justify-content-center">
+                {{--<img id="home_index_image" class="mx-auto mt-n5" src="{{ asset('/images/vizion_it_first_logo_lg.png') }}" alt="Logo">--}}
 
-            <a href="{{ route('about') }}" id="enter_btn" class="btn btn-lg btn-rounded white-text position-absolute z-depth-5" data-wow-delay="1.0s">Enter Site</a>
-        </div>
+                {{--<a href="{{ route('about') }}" id="enter_btn" class="btn btn-lg btn-rounded white-text position-absolute z-depth-5" data-wow-delay="1.0s">Enter Site</a>--}}
+            </div>
+        </a>
     </div>
     <!--/.Mask-->
 @endsection
