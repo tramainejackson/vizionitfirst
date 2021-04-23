@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class NewsArticle extends Model
 {
@@ -78,6 +79,27 @@ class NewsArticle extends Model
 		}
 
 		return $img_file;
+	}
+
+	/**
+	 * Get the document of the news article
+	 */
+	public function getDocumentAttribute($value) {
+
+		// Check if file exist
+		if($value !== null) {
+			$document_file = Storage::disk('public')->exists('documents/' . $value);
+
+			if($document_file) {
+				$document_file = asset('/storage/documents/' . $value);
+			} else {
+				$document_file = null;
+			}
+		} else {
+			$document_file = null;
+		}
+
+		return $document_file;
 	}
 
 	/**

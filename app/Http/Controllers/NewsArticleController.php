@@ -59,10 +59,11 @@ class NewsArticleController extends Controller
      */
     public function store(Request $request) {
 	    $this->validate($request, [
-		    'title'     => 'required|max:255',
-		    'link'      => 'nullable|max:1000',
-		    'document'  => 'nullable|file',
-		    'active'    => 'nullable',
+		    'title'          => 'required|max:255',
+		    'link'           => 'nullable|max:1000',
+		    'document'       => 'nullable|file',
+		    'article_image'  => 'nullable|image',
+		    'active'         => 'nullable',
 	    ]);
 
 	    $document           = new NewsArticle();
@@ -78,6 +79,58 @@ class NewsArticleController extends Controller
 			    // Document is an image
 			    $image = Image::make($document_file->getRealPath())->orientate();
 			    $image->save(storage_path('app/'. $path));
+		    }
+	    }
+
+	    if($request->hasFile('article_image')) {
+		    $error = '';
+		    $newImage = $request->file('article_image');
+
+		    // Check to see if upload is an image
+		    if($newImage->guessExtension() == 'jpeg' || $newImage->guessExtension() == 'png' || $newImage->guessExtension() == 'gif' || $newImage->guessExtension() == 'webp' || $newImage->guessExtension() == 'jpg') {
+
+			    // Check to see if images is too large
+			    if($newImage->getError() == 1) {
+				    $fileName = $request->file('media')[0]->getClientOriginalName();
+				    $error .= "<li class='errorItem'>The file " . $fileName . " is too large and could not be uploaded</li>";
+			    } elseif($newImage->getError() == 0) {
+				    // Check to see if images is about 25MB
+				    // If it is then resize it
+				    if($newImage->getClientSize() < 25000000) {
+					    $image = Image::make($newImage->getRealPath())->orientate();
+//					    $path = $newImage->store('public/images');
+					    $image_ext = substr($image->mime(), '6');
+
+					    // Create a smaller version of the image
+					    // and save to large image folder
+					    $image->resize(300, null, function ($constraint) {
+						    $constraint->aspectRatio();
+					    });
+
+					    if($image->save(storage_path('app/public/images/' . str_ireplace(' ', '_', strtolower($document->title)) . '.' . $image_ext))) {
+						    $document->image = str_ireplace(' ', '_', strtolower($document->title) . '.' . $image_ext);
+					    }
+
+				    } else {
+					    // Resize the image before storing. Will need to hash the filename first
+					    $path = $newImage->store('public/images');
+					    $image = Image::make($newImage)->orientate()->resize(1600, null, function ($constraint) {
+						    $constraint->aspectRatio();
+						    $constraint->upsize();
+					    });
+
+					    // Save Image
+					    if($image->save(storage_path('app/'. $path))) {
+
+					    }
+				    }
+			    } else {
+				    $error .= "<li class='errorItem'>The file " . $fileName . " may be corrupt and could not be uploaded</li>";
+			    }
+		    } else {
+			    // Upload is not an image.
+			    // Redirect with error
+			    $error .= "<li class='errorItem'>The file " . $fileName . " may be corrupt and could not be uploaded</li>";
 		    }
 	    }
 
@@ -118,10 +171,11 @@ class NewsArticleController extends Controller
      */
     public function update(Request $request, NewsArticle $news) {
 	    $this->validate($request, [
-		    'title'     => 'required|max:255',
-		    'link'      => 'nullable|max:255',
-		    'document'  => 'nullable|file',
-		    'active'    => 'nullable',
+		    'title'          => 'required|max:255',
+		    'link'           => 'nullable|max:255',
+		    'document'       => 'nullable|file',
+		    'article_image'  => 'nullable|image',
+		    'active'         => 'nullable',
 	    ]);
 
 	    $news->title    = $request->title;
@@ -147,6 +201,58 @@ class NewsArticleController extends Controller
 
 		    if($old_document) {
 			    Storage::delete($old_document);
+		    }
+	    }
+
+	    if($request->hasFile('article_image')) {
+		    $error = '';
+		    $newImage = $request->file('article_image');
+
+		    // Check to see if upload is an image
+		    if($newImage->guessExtension() == 'jpeg' || $newImage->guessExtension() == 'png' || $newImage->guessExtension() == 'gif' || $newImage->guessExtension() == 'webp' || $newImage->guessExtension() == 'jpg') {
+
+			    // Check to see if images is too large
+			    if($newImage->getError() == 1) {
+				    $fileName = $request->file('media')[0]->getClientOriginalName();
+				    $error .= "<li class='errorItem'>The file " . $fileName . " is too large and could not be uploaded</li>";
+			    } elseif($newImage->getError() == 0) {
+				    // Check to see if images is about 25MB
+				    // If it is then resize it
+				    if($newImage->getClientSize() < 25000000) {
+					    $image = Image::make($newImage->getRealPath())->orientate();
+//					    $path = $newImage->store('public/images');
+					    $image_ext = substr($image->mime(), '6');
+
+					    // Create a smaller version of the image
+					    // and save to large image folder
+					    $image->resize(300, null, function ($constraint) {
+						    $constraint->aspectRatio();
+					    });
+
+					    if($image->save(storage_path('app/public/images/' . str_ireplace(' ', '_', strtolower($news->title)) . '.' . $image_ext))) {
+						    $news->image = str_ireplace(' ', '_', strtolower($news->title) . '.' . $image_ext);
+					    }
+
+				    } else {
+					    // Resize the image before storing. Will need to hash the filename first
+					    $path = $newImage->store('public/images');
+					    $image = Image::make($newImage)->orientate()->resize(1600, null, function ($constraint) {
+						    $constraint->aspectRatio();
+						    $constraint->upsize();
+					    });
+
+					    // Save Image
+					    if($image->save(storage_path('app/'. $path))) {
+
+					    }
+				    }
+			    } else {
+				    $error .= "<li class='errorItem'>The file " . $fileName . " may be corrupt and could not be uploaded</li>";
+			    }
+		    } else {
+			    // Upload is not an image.
+			    // Redirect with error
+			    $error .= "<li class='errorItem'>The file " . $fileName . " may be corrupt and could not be uploaded</li>";
 		    }
 	    }
 

@@ -39,6 +39,18 @@
                                 {{ method_field('PUT') }}
                                 {{ csrf_field() }}
 
+                                <!-- Event Default Image -->
+                                <div class="row memberImg my-4">
+                                    <div class="view mx-auto" id="">
+                                        <img class="hoverable" src="{{ asset('/storage/images/'. $news->image) }}" alt="Article Image" width="300">
+
+                                        <div class="mask d-flex justify-content-center">
+                                            <button type="button" class="btn align-self-end m-0 p-1 white">Change Image</button>
+                                            <input type="file" class="hidden" name="article_image" hidden />
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12 mb-4">
 
                                     <div class="md-form" id="">
@@ -113,7 +125,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-4 my-5">
+                                <div class="col-12 my-5">
 
                                     <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
                                         <input placeholder="Select date" type="text" id="upload_date" class="form-control grey-text" value="{{ $news->created_at->format('m/d/Y') }}" disabled>

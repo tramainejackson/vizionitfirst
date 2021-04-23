@@ -38,6 +38,18 @@
                         <form class="" method="POST" action="{{ route('news.store') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
+                            <!-- Event Default Image -->
+                            <div class="row memberImg mb-3">
+                                <div class="view mx-auto" id="">
+                                    <img class="hoverable" src="{{ asset('/storage/images/empty_article.png') }}" alt="Article Image" width="300">
+
+                                    <div class="mask d-flex justify-content-center">
+                                        <button type="button" class="btn align-self-end m-0 p-1 white">Change Image</button>
+                                        <input type="file" class="hidden" name="article_image" hidden />
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-md-12 mb-4">
 
                                 <div class="md-form" id="">
@@ -64,7 +76,7 @@
                                     <label class="" for="link">Link</label>
 
                                     @if ($errors->has('link'))
-                                        <span class="text-danger">{{ $errors->has('link') }}</span>
+                                        <span class="text-danger">{{ $errors->first('link') }}</span>
                                     @endif
 
                                 </div>
@@ -87,7 +99,7 @@
                                     </div>
 
                                     @if ($errors->has('document'))
-                                        <span class="text-danger">{{ $errors->has('document') }}</span>
+                                        <span class="text-danger">{{ $errors->first('document') }}</span>
                                     @endif
 
                                 </div>
