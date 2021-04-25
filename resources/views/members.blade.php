@@ -24,6 +24,10 @@
 
                 @foreach($members as $member)
 
+                    @php $bioTextCount = strlen($member->bio); @endphp
+                    @php $shortBio = str_limit(nl2br($member->bio), 500); @endphp
+                    @php $fullBio = nl2br($member->bio); @endphp
+
                     <div class="col text-center pb-5" id="">
 
                         {{-- Member Avatar--}}
@@ -33,9 +37,21 @@
                             <h1 class="card-title">{{ $member->name }}</h1>
                         </div>
 
-                        <div class="text-left mx-auto " id="" style="max-width: 75%;">
-                            <p class="card-text" style="font-size: 1.5rem;">{!! nl2br($member->bio) !!}</p>
+                        @if($bioTextCount > 500)
+                            <div class="text-left mx-auto shortBio" id="" style="max-width: 75%;">
+                                <p class="card-text" style="font-size: 1.5rem;">{!! $shortBio !!}</p>
+                            </div>
+                        @endif
+
+                        <div class="text-left mx-auto fullBio{{ $bioTextCount > 500 ? ' d-none' : '' }}" id="" style="max-width: 75%;">
+                            <p class="card-text" style="font-size: 1.5rem;">{!! $fullBio !!}</p>
                         </div>
+
+                        @if($bioTextCount > 500)
+                            <div class="text-left mx-auto ml-0 mt-3" id="" style="max-width: 75%;">
+                                <button class="btn btn-rounded btn-mdb-color readMoreLess">Read More</button>
+                            </div>
+                        @endif
                     </div>
 
                 @endforeach

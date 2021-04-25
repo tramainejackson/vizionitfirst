@@ -38,44 +38,20 @@ $(document).ready(function() {
         $(this).focus();
     });
 
-    //Toggle value for checked item
-    $("body").on("click", ".propUtilSwitch", function(e) {
-        $(this).toggleClass('btn-success active btn-blue-grey');
+    //Toggle read more option on members
+    $("body").on("click", ".readMoreLess", function(e) {
+        var shortBio = $(this).parent().prev().prev();
+        var fullBio  = $(this).parent().prev();
 
-        if($(this).children().attr('checked') == 'checked') {
-            $(this).children().removeAttr('checked');
+        if($(fullBio).hasClass('d-none')) {
+            $(fullBio).removeClass('d-none');
+            $(shortBio).addClass('d-none');
+            $(this).text('Read Less').removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
         } else {
-            $(this).children().attr('checked', 'checked');
+            $(shortBio).removeClass('d-none');
+            $(fullBio).addClass('d-none');
+            $(this).text('Read More').removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
         }
-    });
-
-    // Remove an added requirement that hasn't been saved yet
-    $('body').on('click', '.removeRequirement', function() {
-        var inputGroup = $(this).parents('.input-group');
-        $(inputGroup).addClass('animated bounceOut');
-
-        setTimeout(function() {
-            $(inputGroup).remove();
-        }, 1000);
-    });
-
-    // Remove an added requirement that hasn't been saved yet
-    $('body').on('click', '.deleteRequirement', function(e) {
-        // Get the requirement id
-        var requirement = $(this).parents('.input-group').find('input.hidden');
-
-        // Send input field to deleteRequirement function
-        deleteRequirement(requirement);
-    });
-
-    // Add a requirement input group to the requirements
-    // form block
-    $('body').on('click', '.addRequirementBtn', function() {
-        var inputGroup = $(this).parent().find('.input-group:not(.animated)').clone();
-        var formGroup = $(this).next();
-
-        // Animate input group when added to DOM
-        $(inputGroup).show().addClass('animated bounceIn').appendTo($(formGroup));
     });
 
     // Initialize the datetimepicker
