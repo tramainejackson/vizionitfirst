@@ -70,9 +70,17 @@
                 <h6 class="text-uppercase font-weight-bold">Contact</h6>
                 <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
 
-                <p><i class="fas fa-home mr-3"></i> {{ $settings->city . ', ' . $settings->state . ' ' . $settings->zip }}</p>
-                <p><i class="fas fa-envelope mr-3"></i> {{ $settings->email != null ? $settings->email : 'No Email Address' }}</p>
-                <p><i class="fas fa-phone mr-3"></i> {{ $settings->concat_phone() != null ? $settings->concat_phone() : 'No Phone Number' }}</p>
+                @if($settings->city != null && $settings->state != null && $settings->zip != null)
+                    <p><i class="fas fa-home mr-3"></i> {{ $settings->city . ', ' . $settings->state . ' ' . $settings->zip }}</p>
+                @endif
+
+                @if($settings->email != null)
+                    <p><i class="fas fa-envelope mr-3"></i> {{ $settings->email }}</p>
+                @endif
+
+                @if($settings->concat_phone() != null)
+                    <p><i class="fas fa-phone mr-3"></i> {{ $settings->concat_phone() }}</p>
+                @endif
 
             </div>
             <!-- Grid column -->

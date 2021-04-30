@@ -18,7 +18,7 @@
         nav.navbar button.navbar-toggler span.navbar-toggler-icon.blue-ic {
             color: transparent !important;
         }
-        ul.navbar-nav:nth-of-type(1) .nav-item, ul.navbar-nav:nth-of-type(2) .nav-item, a.navbar-brand {
+        ul.navbar-nav:nth-of-type(1) .nav-item, ul.navbar-nav:nth-of-type(2) .nav-item, a.navbar-brand, .donateBtn {
             display: none !important;
         }
         #intro {
@@ -60,7 +60,7 @@
             }
 
             #intro {
-                background-size: 80% 80%;
+                background-size: 50% 50%;
                 background-position: 50% 10%;
             }
 
@@ -72,7 +72,7 @@
 
         @media only screen and (max-width: 500px) {
             #intro {
-                background-size: 90% 50%;
+                background-size: 65% 30%;
                 background-position: 50% 35%;
             }
         }
@@ -83,8 +83,8 @@
             }
 
             #intro {
-                background-size: 80% 80%;
-                background-position: 50% 10%;
+                background-size: 50% 50%;
+                background-position: 50% 35%;
             }
 
             @keyframes scale_btn {
@@ -106,7 +106,7 @@
 
         @media only screen and (min-width: 992px) {
             #intro {
-                background-size: 40% 80%;
+                background-size: 50% 50%;
                 background-position: center center;
             }
         }
