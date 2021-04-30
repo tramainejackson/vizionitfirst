@@ -71,15 +71,15 @@
                 <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
 
                 @if($settings->city != null && $settings->state != null && $settings->zip != null)
-                    <p><i class="fas fa-home mr-3"></i> {{ $settings->city . ', ' . $settings->state . ' ' . $settings->zip }}</p>
+                    <p><i class="fas fa-home mr-3 dark-grey-text"></i> {{ $settings->city . ', ' . $settings->state . ' ' . $settings->zip }}</p>
                 @endif
 
                 @if($settings->email != null)
-                    <p><i class="fas fa-envelope mr-3"></i> {{ $settings->email }}</p>
+                    <p><i class="fas fa-envelope mr-3 dark-grey-text"></i> <a class="dark-grey-text" href="mailto:{{ $settings->email }}">{{ $settings->email }}</a></p>
                 @endif
 
                 @if($settings->concat_phone() != null)
-                    <p><i class="fas fa-phone mr-3"></i> {{ $settings->concat_phone() }}</p>
+                    <p><i class="fas fa-phone mr-3 dark-grey-text"></i> {{ $settings->concat_phone() }}</p>
                 @endif
 
             </div>
