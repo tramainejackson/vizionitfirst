@@ -70,7 +70,7 @@
             <!-- right -->
             <ul class="navbar-nav nav-flex-icons align-items-center justify-content-end col-12 col-lg-4">
                 <li class="nav-item flex-fill">
-                    <a href="#" class="nav-link waves-effect text-center text-lg-right" target="">
+                    <a href="{{ route('donate') }}" class="nav-link waves-effect text-center text-lg-right">
                         <button class="btn btn-lg btn-rounded btn-green mr-0 donateBtn" type="button">Donate</button>
                     </a>
                 </li>

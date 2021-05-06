@@ -53,4 +53,15 @@ class HomeController extends Controller
 
 	    return view('contact_us', compact('message_reasons'));
     }
+
+    /**
+     * Show the home web page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function donate() {
+    	$message_reasons = MessageReason::all();
+
+	    return view('donate', compact('message_reasons'));
+    }
 }

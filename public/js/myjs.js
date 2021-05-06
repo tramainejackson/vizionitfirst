@@ -38,6 +38,18 @@ $(document).ready(function() {
         $(this).focus();
     });
 
+    $("body").on("click", ".amountBtn", function(e) {
+        var donationAmount = $(this).text().slice(1);
+        console.log(donationAmount);
+
+        $('.amountBtn').each(function() {
+           $(this).removeClass('deep-orange white-text').addClass('btn-outline-deep-orange');
+        });
+
+        $(this).addClass('deep-orange white-text').removeClass('btn-outline-deep-orange');
+        $("input[name='donation']").val(donationAmount);
+    });
+
     //Toggle read more option on members
     $("body").on("click", ".readMoreLess", function(e) {
         var shortBio = $(this).parent().prev().prev();
