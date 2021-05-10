@@ -71,7 +71,6 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function paypal_donation(Request $request) {
-//    	dd($request);
 	    $this->validate($request, [
 		    'orderID'       => 'required|max:100',
 		    'payerID'       => 'required|',
@@ -92,9 +91,11 @@ class HomeController extends Controller
     	$donation->email = $request->email_address;
 
 	    if($donation->save()){
-		    return 'Thank you for your donation. We value your support and will continue to strive to uplift our communities!';
+		    return response('Thank you for your donation. We value your support and will continue to strive to uplift our communities!', 200)
+			    ->header('Content-Type', 'text/plain');
 	    } else {
-		    return 'Donation Successful but some of your personal information wasn\'t saved';
+		    return response('Donation Successful but some of your personal information wasn\'t saved', 200)
+			    ->header('Content-Type', 'text/plain');
 	    }
     }
 }
