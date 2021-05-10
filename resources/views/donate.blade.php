@@ -7,7 +7,7 @@
 @endsection
 
 @section('additional_scripts')
-    <script src="https://www.paypal.com/sdk/js?client-id=AV87dtYjY38pNsyjab_VfwKcEYM-B0UT5jqREW2rfMdYfhdMN6oG5jLoViSpLvoxKBi_YtVcvcp__l_3"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AUo1tCtKki1U5exiwssFEPqg-sQ6yivUQjmlCXTAj7-TgkbO2jGyzaxuxNQxUjvACPr9iKCeLkMsM6e4"></script>
     <script>
         function formInputCheck() {
             var errorCheck = false;
