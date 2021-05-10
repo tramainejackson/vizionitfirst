@@ -40,14 +40,13 @@ $(document).ready(function() {
 
     $("body").on("click", ".amountBtn", function(e) {
         var donationAmount = $(this).text().slice(1);
-        console.log(donationAmount);
 
         $('.amountBtn').each(function() {
            $(this).removeClass('deep-orange white-text').addClass('btn-outline-deep-orange');
         });
 
         $(this).addClass('deep-orange white-text').removeClass('btn-outline-deep-orange');
-        $("input[name='donation']").val(donationAmount);
+        $("#total_price").val(donationAmount);
     });
 
     //Toggle read more option on members
@@ -486,35 +485,24 @@ function memberImgPreview(input) {
     reader.readAsDataURL(input.files[0]);
 }
 
-// Remove individual image via ajax request
-function defaultPropImage(img) {
-    event.preventDefault();
-
+// Send PayPal Information along with form to
+// store transaction
+function payPalComplete(data) {
     $.ajax({
         method: "POST",
-        url: "/default_image",
-        data: {PropertyImages:$(img).val()}
+        url: "/paypal_donation",
+        data: $.param(data) + "&" + $('form#paypal_donation').serialize()
     })
-
-        .fail(function() {
-            alert("Fail");
-        })
-
         .done(function(data) {
-            var image = data;
-            var allImages = $('.deletePropImages');
+            toastr.success(data, "", {showMethod: 'slideDown'});
+        })
+        .fail(function(data) {
+            toastr.success(data, "", {showMethod: 'slideDown'});
+        })
+}
 
-            $(allImages).each(function() {
-                inputVal = $(this).find('input');
-                button = $(this).find('button');
-
-                if($(inputVal).val() == $(image)[0].id) {
-                    $(button).text('Default').addClass('btn-success').removeClass('btn-primary');
-                } else {
-                    $(button).text('Make Default').addClass('btn-primary').removeClass('btn-success');
-                }
-            });
-        });
+function updateAmount() {
+    return $("#total_price").val();
 }
 
 // Initialize tooltip

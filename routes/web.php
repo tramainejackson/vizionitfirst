@@ -30,6 +30,8 @@ Route::get('/about', 'HomeController@about')->name('about');
 
 Route::get('/contact', 'HomeController@contact_us')->name('contact_us');
 
+Route::post('/paypal_donation', 'HomeController@paypal_donation')->name('paypal_donation');
+
 Route::get('/donate', 'HomeController@donate')->name('donate');
 
 Route::resource('administrator', 'AdminController');

@@ -15,9 +15,19 @@
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '0.01'
+                            value: updateAmount()
                         }
                     }]
+                });
+            },
+
+            onApprove: function(data, actions) {
+                payPalComplete(data);
+
+                // This function captures the funds from the transaction.
+                return actions.order.capture().then(function(details) {
+                    // This function shows a transaction success message to your buyer.
+                    // alert('Transaction completed by ' + details.payer.name.given_name);
                 });
             }
         }).render('#paypal-button-container');
@@ -31,7 +41,7 @@
     @section('jumbotron_title', 'Donations')
     @include('content_parts.jumbotron')
 
-    <div class="container" id="paypal-button-container">
+    <div class="container">
         <div class="row" id="">
             <div class="my-4 col-12" id="">
                 <h1 class="h1 h1-responsive text-center coolText3">Donate</h1>
@@ -45,14 +55,14 @@
 
         <div class="row" id="">
             <div class="col-12 py-4" id="">
-                <form action="" class="">
+                <form action="" class="" name="paypal_donation" id="paypal_donation">
                     <div class="form-row" id="">
                         <div class="col-8 md-form input-group mb-3 mx-auto">
                             <div class="input-group-prepend">
                                 <span class="input-group-text md-addon blue darken-3 white-text"><i class="fas fa-dollar-sign"></i></span>
                             </div>
 
-                            <input type="number" class="form-control" name="donation" value="{{ old('amount') ? old('amount') : 25.00 }}" placeholder="Enter an Amount" step="0.01"/>
+                            <input type="number" id="total_price" class="form-control" name="donation" value="{{ old('amount') ? old('amount') : 25.00 }}" placeholder="Enter an Amount" step="0.01"/>
                         </div>
                     </div>
 
@@ -84,7 +94,7 @@
 
                                     <div class="col-12 col-md-6" id="">
                                         <div class="md-form">
-                                            <input type="text" name="last_name" id="last_name" class="form-control" />
+                                            <input type="text" name="last_name" id="last_name" class="form-control" required />
                                             <label for="last_name">Last Name</label>
                                         </div>
                                     </div>
@@ -113,5 +123,8 @@
                 </form>
             </div>
         </div>
+    </div>
+
+    <div class="container text-center mx-auto" id="paypal-button-container">
     </div>
 @endsection
