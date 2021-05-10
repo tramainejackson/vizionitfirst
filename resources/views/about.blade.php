@@ -3,7 +3,7 @@
 @section('content')
 
     {{--Add Jumbotron--}}
-    @section('jumbotron_title', 'Mission Possible')
+    @section('jumbotron_title', 'Mission Of This Organization Is To Turn Dreams Into Reality')
     @include('content_parts.jumbotron')
 
     <div class="container-fluid">
@@ -13,7 +13,7 @@
             <div class="col-12 col-md-10 col-lg-8 pt-5 mb-5 mx-auto" id="" style="">
                 <div class="">
                     <!--Content-->
-                    <h2 class="mb-3 text-center font-weight-bold display-3">Our Mission</h2>
+                    <h2 class="mb-3 text-center font-weight-bold display-3">A Message From Our Founder</h2>
                     <p style="font-size: 22px;">{{ $settings->mission_statement !== null ? $settings->mission_statement : 'No Mission Statement Entered Yet' }}</p>
                 </div>
             </div>
