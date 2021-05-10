@@ -9,6 +9,35 @@
 @section('additional_scripts')
     <script src="https://www.paypal.com/sdk/js?client-id=AV87dtYjY38pNsyjab_VfwKcEYM-B0UT5jqREW2rfMdYfhdMN6oG5jLoViSpLvoxKBi_YtVcvcp__l_3"></script>
     <script>
+        function formInputCheck() {
+            var errorCheck = false;
+
+            $('#paypal_donation input').each(function (index) {
+                if(($(this).val() === '') && (index === 4)) {
+                    $('#email_address').focus();
+                    toastr.warning('Please Enter an Email Address', "", {showMethod: 'slideDown'});
+                    errorCheck = true;
+                } else if (($(this).val() === '') && (index === 2)) {
+                    $('#last_name').focus();
+                    toastr.warning('Please Enter Your Last Name', "", {showMethod: 'slideDown'});
+                    errorCheck = true;
+                } else if (($(this).val() === '') && (index === 1)) {
+                    $('#first_name').focus();
+                    toastr.warning('Please Enter Your First Name', "", {showMethod: 'slideDown'});
+                    errorCheck = true;
+                } else if (($(this).val() === '') && (index === 0)) {
+                    $('#total_price').focus();
+                    toastr.warning('Please Enter a Donation Amount', "", {showMethod: 'slideDown'});
+                    errorCheck = true;
+                }
+            });
+
+            if(errorCheck === false) {
+                $('.payPalBtnCover').remove();
+            }
+            return errorCheck;
+        }
+
         paypal.Buttons({
             createOrder: function(data, actions) {
                 // This function sets up the details of the transaction, including the amount and line item details.
@@ -103,7 +132,7 @@
                                 <div class="form-row" id="">
                                     <div class="col-12" id="">
                                         <div class="md-form">
-                                            <input type="text" name="company_name" id="last_name" class="form-control" required />
+                                            <input type="text" name="company_name" id="company_name" class="form-control" required />
                                             <label for="company_name">Company Name</label>
                                         </div>
                                     </div>
@@ -126,5 +155,6 @@
     </div>
 
     <div class="container text-center mx-auto" id="paypal-button-container">
+        <div class="payPalBtnCover position-absolute h-100 w-100" id="" style="z-index: 1000;" onclick="formInputCheck();"></div>
     </div>
 @endsection

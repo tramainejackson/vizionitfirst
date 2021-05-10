@@ -77,7 +77,7 @@ class HomeController extends Controller
 		    'donation'      => 'required',
 		    'first_name'    => 'required|max:50',
 		    'last_name'     => 'required|max:50',
-		    'company_name'  => 'required|max:100',
+		    'company_name'  => 'nullabe|max:100',
 		    'email_address' => 'required|email|max:100',
 	    ]);
 
