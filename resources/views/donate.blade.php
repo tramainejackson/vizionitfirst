@@ -85,8 +85,8 @@
         <div class="row" id="">
             <div class="col-12 py-4" id="">
                 <form action="" class="" name="paypal_donation" id="paypal_donation">
-                    <div class="form-row" id="">
-                        <div class="col-8 md-form input-group mb-3 mx-auto">
+                    <div class="form-row mx-2 mx-md-3 mx-lg-4" id="">
+                        <div class="col-12 col-lg-10 md-form input-group mb-3 mx-auto">
                             <div class="input-group-prepend">
                                 <span class="input-group-text md-addon blue darken-3 white-text"><i class="fas fa-dollar-sign"></i></span>
                             </div>
@@ -96,18 +96,18 @@
                     </div>
 
                     <div class="form-row" id="">
-                        <div class="col-8 mx-auto" id="">
+                        <div class="col-12 col-lg-10 mx-auto" id="">
                             <div class="row" id="">
-                                <button class='btn btn-sm col rounded amountBtn deep-orange white-text' type='button'>$25.00</button>
-                                <button class='btn btn-sm col rounded amountBtn btn-outline-deep-orange' type='button'>$50.00</button>
-                                <button class='btn btn-sm col rounded amountBtn btn-outline-deep-orange' type='button'>$100.00</button>
-                                <button class='btn btn-sm col rounded amountBtn btn-outline-deep-orange' type='button'>Custom Amount</button>
+                                <button class='btn col-11 mx-auto rounded amountBtn deep-orange white-text' type='button'>$25.00</button>
+                                <button class='btn col-11 mx-auto rounded amountBtn btn-outline-deep-orange' type='button'>$50.00</button>
+                                <button class='btn col-11 mx-auto rounded amountBtn btn-outline-deep-orange' type='button'>$100.00</button>
+                                <button class='btn col-11 mx-auto rounded amountBtn btn-outline-deep-orange' type='button'>Custom Amount</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-row" id="">
-                        <div class="col-8 card p-4 my-4 mx-auto" id="">
+                    <div class="form-row mx-2 mx-md-3 mx-lg-4" id="">
+                        <div class="col-12 col-lg-10 card py-4 my-4 mx-auto" id="">
                             <div class="card-header text-center" id="">
                                 <h2 class="">Personal Information</h2>
                             </div>
@@ -154,7 +154,7 @@
         </div>
     </div>
 
-    <div class="container text-center mx-auto" id="paypal-button-container">
+    <div class="container text-center mx-auto position-relative" id="paypal-button-container">
         <div class="payPalBtnCover position-absolute h-100 w-100" id="" style="z-index: 1000;" onclick="formInputCheck();"></div>
     </div>
 @endsection
