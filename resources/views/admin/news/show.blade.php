@@ -18,6 +18,10 @@
 
                     <!-- Title -->
                     <h2 class="display-2 text-center">Announcements</h2>
+
+                    <div class="d-md-none col-md-4 mb-4">
+                        <a href="{{ route('news.index') }}" class='btn btn-danger' type='button'>See All Events/Posts</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,7 +69,7 @@
             <!-- Grid column -->
 
             <!-- Grid column -->
-            <div class="col-md-4 mb-4">
+            <div class="d-none d-md-block col-md-4 mb-4">
 
                 <section class="magazine-section mb-5">
 
