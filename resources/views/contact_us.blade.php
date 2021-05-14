@@ -38,7 +38,7 @@
 @section('content')
 
     <!-- Full Page Intro -->
-    <div class="view" style="background-image: url({{ asset('/storage/images/photo12.png') }}); background-repeat: no-repeat; background-size: cover; background-position: inherit;">
+    <div class="view" style="background-image: url({{ asset('/images/photo12.png') }}); background-repeat: no-repeat; background-size: cover; background-position: inherit;">
         <!-- Mask & flexbox options-->
         <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
             <!-- Content -->
