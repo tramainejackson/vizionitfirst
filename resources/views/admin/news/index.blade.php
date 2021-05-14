@@ -29,39 +29,74 @@
 
         <div class="row" id="">
 
-            <div class="col-12 col-lg-7" id="">
+            <div class="col-12 col-lg-10 col-xl-7 mx-auto" id="">
 
                 @if($allArticles->count() > 0)
 
-                    @foreach($allArticles as $article)
+                    <!--Section: Content-->
+                    <div class="dark-grey-text mb-4">
 
-                        <div class="row my-5" id="">
-                            <div class="col text-center" id="">
-                                <a class="btn btn-outline-info" href="{{ route('news.edit', [$article->id]) }}">Edit Article</a>
+                        <!-- Section heading -->
+                        <h2 class="text-center font-weight-bold mb-4 pb-2">Events/Posts</h2>
 
-                                <div class="" id="">
-                                    <h5 class="card-title py-3">Article Title: {{ $article->title }} </h5>
+                        @foreach($allArticles as $article)
+
+                            <!-- Grid row -->
+                            <div class="row align-items-center">
+
+                                <!-- Grid column -->
+                                <div class="col-12 col-md-6 col-xl-5 mx-auto">
+
+                                    <!-- Featured image -->
+                                    <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4">
+                                        <img class="img-fluid" src="{{ asset('/storage/images/' . $article->image) }}" alt="Article image">
+                                        <a href="{{ route('news.show', $article->id) }}">
+                                            <div class="mask rgba-white-slight"></div>
+                                        </a>
+                                    </div>
+
                                 </div>
+                                <!-- Grid column -->
 
-                                @if($article->link != '')
-                                    <div class="" id="">
-                                        <a href="{{ $article->link }}" class="btn btn-outline-orange" target="_blank">Web Link</a>
-                                    </div>
-                                @endif
+                                <!-- Grid column -->
+                                <div class="col-12 col-md-6 col-xl-7 mx-auto">
 
-                                @if($article->document != '')
-                                    <div class="" id="">
-                                        <a href="{{ $article->document }}" class="btn btn-outline-dark-green" target="_blank">Download Document</a>
-                                    </div>
-                                @endif
+                                    <!-- Category -->
+                                    @if($article->document != '')
+                                        <a href="{{ $article->document }}" class="green-text" target="_blank">
+                                            <h6 class="font-weight-bold mb-3 d-inline-block"><i class="fas fa-download"></i> Download Document</h6>
+                                        </a>
+                                    @endif
+
+                                    @if($article->link != '')
+                                        <a href="{{ $article->link }}" class="blue-text{{ $article->document != '' ? ' ml-4' : '' }}" id="" target="_blank">
+                                            <h6 class="font-weight-bold mb-3 d-inline-block"><i class="fas fa-blog"></i> Web Link</h6>
+                                        </a>
+                                    @endif
+
+                                    <!-- Post title -->
+                                    <h4 class="font-weight-bold mb-3"><strong>{{ $article->title }}</strong></h4>
+                                    <!-- Excerpt -->
+                                    <p>{{ $article->news_body != '' ? $article->news_body : 'Article Has No Text' }}</p>
+                                    <!-- Post data -->
+                                    <p class="text-muted"><strong>Added</strong>, {{ $article->created_at->format('m/d/Y') }}</p>
+                                    <!-- Read more button -->
+                                    <a href="{{ route('news.show', $article->id) }}" class="btn btn-success btn-md btn-rounded mx-0">Read more</a>
+
+                                </div>
+                                <!-- Grid column -->
+
                             </div>
-                        </div>
+                            <!-- Grid row -->
 
-                        @if(!$loop->last)
-                            <hr/>
-                        @endif
+                            @if(!$loop->last)
+                                <hr/>
+                            @endif
 
-                    @endforeach
+                        @endforeach
+
+                    </div>
+                    <!--Section: Content-->
 
                 @else
 
