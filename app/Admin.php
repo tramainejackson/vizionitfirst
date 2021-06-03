@@ -30,9 +30,27 @@ class Admin extends Model
 	}
 
 	/**
-	 * Check for active services
+	 * Get the address of the settings
 	 */
-	public function concat_address() {
-		return $this->address . ' ' . $this->city . ', ' . $this->state;
+	public function concat_address2() {
+		$address = '';
+
+		if($this->city != '') {
+			$address .= $this->city  . ', ';
+		}
+
+		if($this->state != '') {
+			$address .= $this->state;
+
+			if($this->zip != '') {
+				$address .= ', ' . $this->zip;
+			}
+		} else {
+			if($this->zip != '') {
+				$address .= $this->zip;
+			}
+		}
+
+		return $address;
 	}
 }

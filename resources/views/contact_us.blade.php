@@ -110,7 +110,7 @@
                         <div class="" id="">
                             <h4 class="h4 h4-responsive font-weight-bold text-underline" style="font-size: xx-large;">Address</h4>
                             <p class="mb-0" style="font-size: x-large;">{{ $settings->address }}</p>
-                            <p class="mb-0" style="font-size: x-large;">{{ $settings->city . ', ' . $settings->state . ' ' . $settings->zip }}</p>
+                            <p class="mb-0" style="font-size: x-large;">{{ $settings->concat_address2() }}</p>
                             <p class="mb-4 pb-2" style="font-size: x-large;">United States</p>
                         </div>
 

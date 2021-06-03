@@ -24,7 +24,7 @@ class MessageController extends Controller
      */
     public function index() {
 	    $admin = Auth::user();
-	    $messages = Message::paginate(2);
+	    $messages = Message::paginate(10);
 	    $messagesCount = Message::all()->count();
 	    $today = Carbon::now();
 
@@ -76,7 +76,8 @@ class MessageController extends Controller
 	    $message->first_name = $request->first_name;
 	    $message->message = $request->message;
 	    $message->phone = $request->phone;
-	    $message->reason = $request->reason ? join(';', $request->reason) : NULL;
+	    $message->non_profit = 1;
+	    $message->rpmanagement = 0;
 
 	    if($message->save()) {
 //		    $contact = new ConsultContact();
@@ -100,8 +101,7 @@ class MessageController extends Controller
      * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
-    {
+    public function show(Message $message) {
         //
     }
 
@@ -111,8 +111,7 @@ class MessageController extends Controller
      * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit(Message $message)
-    {
+    public function edit(Message $message) {
         //
     }
 
@@ -123,8 +122,7 @@ class MessageController extends Controller
      * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Message $message)
-    {
+    public function update(Request $request, Message $message) {
 
     }
 
