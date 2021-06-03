@@ -57,48 +57,55 @@
                                     </h3>
                                     <hr>
                                 </div>
-                                <!--Body-->
-                                <div class="md-form">
-                                    <i class="fa fa-user prefix grey-text"></i>
 
-                                    <input type="text" name="name" id="form_name" class="form-control" value="{{ old('name') }}" {{ $errors->has('name') ? 'autofocus' : ''}}>
-                                    <label for="form_name">Name</label>
+                                <!-- Form -->
+                                <form action="{{ route('messages.store') }}" method="POST" class="" style="color: #757575;">
+                                    {{ csrf_field() }}
 
-                                    @if ($errors->has('name'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="md-form">
-                                    <i class="fa fa-envelope prefix grey-text"></i>
+                                    <!--Body-->
+                                    <div class="md-form">
+                                        <i class="fa fa-user prefix grey-text"></i>
 
-                                    <input type="email" name="email" id="form_email" class="form-control" value="{{ old('email') }}" {{ $errors->has('email') ? 'email' : ''}}>
-                                    <label for="form_email">E-mail</label>
+                                        <input type="text" name="name" id="form_name" class="form-control" value="{{ old('name') }}" {{ $errors->has('name') ? 'autofocus' : ''}}>
+                                        <label for="form_name">Name</label>
 
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <!--Textarea with icon prefix-->
-                                <div class="md-form">
-                                    <i class="fa fa-pencil-alt prefix grey-text"></i>
+                                        @if ($errors->has('name'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="md-form">
+                                        <i class="fa fa-envelope prefix grey-text"></i>
 
-                                    <textarea name="message" id="form_message" class="md-textarea form-control" rows="4" {{ $errors->has('message') ? 'autofocus' : ''}}>{{ old('message') }}</textarea>
-                                    <label for="form_message">How Can We Help</label>
+                                        <input type="email" name="email" id="form_email" class="form-control" value="{{ old('email') }}" {{ $errors->has('email') ? 'email' : ''}}>
+                                        <label for="form_email">E-mail</label>
 
-                                    @if ($errors->has('message'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('message') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
+                                        @if ($errors->has('email'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <!--Textarea with icon prefix-->
+                                    <div class="md-form">
+                                        <i class="fa fa-pencil-alt prefix grey-text"></i>
 
-                                <div class="text-center mt-3">
-                                    <button class="btn btn-indigo">Send</button>
-                                </div>
+                                        <textarea name="message" id="form_message" class="md-textarea form-control" rows="4" {{ $errors->has('message') ? 'autofocus' : ''}}>{{ old('message') }}</textarea>
+                                        <label for="form_message">How Can We Help</label>
+
+                                        @if ($errors->has('message'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('message') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                    <div class="text-center mt-3">
+                                        <button class="btn btn-indigo" type="submit">Send</button>
+                                    </div>
+                                </form>
+                                <!-- Form -->
                             </div>
                         </div>
                         <!--/.Form-->

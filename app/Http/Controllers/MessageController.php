@@ -24,8 +24,8 @@ class MessageController extends Controller
      */
     public function index() {
 	    $admin = Auth::user();
-	    $messages = Message::paginate(10);
-	    $messagesCount = Message::all()->count();
+	    $messages = Message::where('non_profit', '=', 1)->paginate(10);
+	    $messagesCount = Message::where('non_profit', '=', 1)->count();
 	    $today = Carbon::now();
 
         return view('admin.messages.index', compact('admin', 'messages', 'today', 'messagesCount'));
@@ -50,25 +50,11 @@ class MessageController extends Controller
      */
     public function store(Request $request) {
 
-    	if(isset($request->chat)) {
-		    $this->validate($request, [
-			    'first_name'    => 'required|max:50',
-			    'last_name'     => 'required|max:50',
-			    'email'         => 'required|email|max:50',
-			    'phone'         => 'nullable',
-			    'message'       => 'required',
-		    ]);
-	    } else {
-		    $this->validate($request, [
-			    'first_name'    => 'required|max:50',
-			    'last_name'     => 'required|max:50',
-			    'email'         => 'required|email|max:50',
-			    'phone'         => 'nullable',
-			    'reason'        => 'required|array|min:1',
-			    'message'       => 'required',
-		    ]);
-	    }
-
+	    $this->validate($request, [
+		    'name'    => 'required|max:125',
+		    'email'         => 'required|email|max:50',
+		    'message'       => 'required',
+	    ]);
 
 	    $message = new Message();
 	    $message->email = $request->email;
