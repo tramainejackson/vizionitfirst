@@ -70,27 +70,28 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function paypal_donation(Request $request) {
+    public function paypal_donation(Request $request)
+    {
 	    $this->validate($request, [
-		    'orderID'       => 'required|max:100',
-		    'payerID'       => 'required|',
-		    'donation'      => 'required',
-		    'first_name'    => 'required|max:50',
-		    'last_name'     => 'required|max:50',
-		    'company_name'  => 'nullable|max:100',
+		    'orderID' => 'required|max:100',
+		    'payerID' => 'required|',
+		    'donation' => 'required',
+		    'first_name' => 'required|max:50',
+		    'last_name' => 'required|max:50',
+		    'company_name' => 'nullable|max:100',
 		    'email_address' => 'required|email|max:100',
 	    ]);
 
-    	$donation = new Donation();
-    	$donation->order_id =$request->orderID;
-    	$donation->payer_id = $request->payerID;
-    	$donation->amount = $request->donation;
-    	$donation->first_name = $request->first_name;
-    	$donation->last_name = $request->last_name;
-    	$donation->company_name = $request->company_name;
-    	$donation->email = $request->email_address;
+	    $donation = new Donation();
+	    $donation->order_id = $request->orderID;
+	    $donation->payer_id = $request->payerID;
+	    $donation->amount = $request->donation;
+	    $donation->first_name = $request->first_name;
+	    $donation->last_name = $request->last_name;
+	    $donation->company_name = $request->company_name;
+	    $donation->email = $request->email_address;
 
-	    if($donation->save()){
+	    if ($donation->save()) {
 		    return response('Thank you for your donation. We value your support and will continue to strive to uplift our communities!', 200)
 			    ->header('Content-Type', 'text/plain');
 	    } else {
@@ -98,4 +99,5 @@ class HomeController extends Controller
 			    ->header('Content-Type', 'text/plain');
 	    }
     }
+
 }

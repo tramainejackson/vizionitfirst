@@ -24,10 +24,11 @@ class MessageController extends Controller
      */
     public function index() {
 	    $admin = Auth::user();
-	    $messages = Message::all();
+	    $messages = Message::paginate(2);
+	    $messagesCount = Message::all()->count();
 	    $today = Carbon::now();
 
-        return view('admin.messages.index', compact('admin', 'messages', 'today'));
+        return view('admin.messages.index', compact('admin', 'messages', 'today', 'messagesCount'));
     }
 
     /**

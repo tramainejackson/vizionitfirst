@@ -29,6 +29,16 @@ class Donation extends Authenticatable
     protected $fillable = [
         'order_id', 'payer_id', 'amount', 'first_name', 'last_name', 'company_name', 'email'
     ];
+
+	/**
+	 * Create full name accessor
+	 *
+	 * @param \Illuminate\Database\Eloquent\Builder $query
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public function full_name()	{
+		return $this->first_name . " " . $this->last_name;
+	}
 	
 	/**
 	* Get the name of the member
@@ -38,68 +48,10 @@ class Donation extends Authenticatable
 	}
 
 	/**
-	* Get the link of the member
-	*/
-	public function getLinkAttribute($value) {
-		return strtolower($value);
-	}
-
-	/**
-	* Get the owner of the member
-	*/
-	public function getNameAttribute($value) {
-		return ucwords(strtolower($value));
-	}
-
-	/**
-	 * Get the avatar of the member
-	 */
-	public function getAvatarAttribute($value) {
-
-		// Check if file exist
-		if($value !== null) {
-			$img_file = Storage::disk('public')->exists('images/' . $value);
-
-			if($img_file) {
-				$img_file = $value;
-			} else {
-				$img_file = 'empty_face.png';
-			}
-		} else {
-			$img_file = 'empty_face.png';
-		}
-
-		return $img_file;
-	}
-
-	/**
 	* Set the name of the member
 	*/
 	public function setTitleAttribute($value) {
 		$this->attributes['title'] = ucwords(strtolower($value));
 	}
 
-	/**
-	* Set the link of the member
-	*/
-	public function setLinkAttribute($value) {
-		$this->attributes['link'] = strtolower($value);
-	}
-
-	/**
-	* Set the owner of the member
-	*/
-	public function setNameAttribute($value) {
-		$this->attributes['name'] = ucwords(strtolower($value));
-	}
-
-	/**
-	 * Check for active clients
-	 */
-	public function scopeShowMembers($query) {
-		return $query->where([
-			['active', '=', 1],
-			['non_profit', '=', 1],
-		])->get();
-	}
 }

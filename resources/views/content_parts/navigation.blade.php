@@ -36,6 +36,10 @@
                         <a class="nav-link waves-effect" href="{{ route('messages.index') }}">Messages</a>
                     </li>
 
+                    <li class="nav-item" style="font-size: 1.5rem;">
+                        <a class="nav-link waves-effect" href="{{ route('completed_donations') }}">Donations</a>
+                    </li>
+
                 @else
 
                     <li class="nav-item dropdown" style="font-size: 1.5rem;">

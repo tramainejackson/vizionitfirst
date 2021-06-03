@@ -34,6 +34,8 @@ Route::post('/paypal_donation', 'HomeController@paypal_donation')->name('paypal_
 
 Route::get('/donate', 'HomeController@donate')->name('donate');
 
+Route::get('/completed_donations', 'DonationController@index')->name('completed_donations');
+
 Route::resource('administrator', 'AdminController');
 
 Route::resource('messages', 'MessageController');

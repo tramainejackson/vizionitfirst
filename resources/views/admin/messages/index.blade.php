@@ -20,7 +20,7 @@
                     <h2 class="display-2 text-center">Messages</h2>
 
                     <!-- Title -->
-                    <p class="text-center">Total Messages: {{ $messages->count() }}</p>
+                    <p class="text-center">Total Messages: {{ $messagesCount }}</p>
                 </div>
             </div>
         </div>
@@ -70,6 +70,8 @@
                     @endif
 
                 @endforeach
+
+                {{ $messages->links() }}
 
             @else
 

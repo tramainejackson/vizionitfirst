@@ -38,6 +38,9 @@
                     <p>
                         <a class="dark-grey-text" href="{{ route('messages.index') }}">Messages</a>
                     </p>
+                    <p>
+                        <a class="dark-grey-text" href="{{ route('completed_donations') }}">Donations</a>
+                    </p>
 
                     <p>
                         <a href="{{ route('logout') }}" class="dark-grey-text" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
