@@ -139,9 +139,9 @@ class MemberController extends Controller
 
 					    // Create a smaller version of the image
 					    // and save to large image folder
-					    $image->resize(300, null, function ($constraint) {
-						    $constraint->aspectRatio();
-					    });
+//					    $image->resize(300, null, function ($constraint) {
+//						    $constraint->aspectRatio();
+//					    });
 
 					    if($image->save(storage_path('app/public/images/' . str_ireplace(' ', '_', strtolower($member->name)) . '.' . $image_ext))) {
 							$member->avatar = str_ireplace(' ', '_', strtolower($member->name) . '.' . $image_ext);
@@ -154,12 +154,9 @@ class MemberController extends Controller
 						    $constraint->aspectRatio();
 						    $constraint->upsize();
 					    });
+
+					    //Save Image
 					    $image->save(storage_path('app/'. $path));
-
-					    // Save Image
-					    if($addImage->save()) {
-
-					    }
 				    }
 			    } else {
 				    $error .= "<li class='errorItem'>The file " . $fileName . " may be corrupt and could not be uploaded</li>";
