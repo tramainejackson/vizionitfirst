@@ -139,9 +139,9 @@ class MemberController extends Controller
 
 					    // Create a smaller version of the image
 					    // and save to large image folder
-//					    $image->resize(300, null, function ($constraint) {
-//						    $constraint->aspectRatio();
-//					    });
+					    $image->fit(1700, function ($constraint) {
+						    $constraint->upsize();
+					    });
 
 					    if($image->save(storage_path('app/public/images/' . str_ireplace(' ', '_', strtolower($member->name)) . '.' . $image_ext))) {
 							$member->avatar = str_ireplace(' ', '_', strtolower($member->name) . '.' . $image_ext);
