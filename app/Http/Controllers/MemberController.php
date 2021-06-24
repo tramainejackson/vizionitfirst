@@ -139,7 +139,7 @@ class MemberController extends Controller
 
 					    // Create a smaller version of the image
 					    // and save to large image folder
-					    $image->fit(1700, function ($constraint) {
+					    $image->fit(1700, 1700, function ($constraint) {
 						    $constraint->upsize();
 					    });
 
