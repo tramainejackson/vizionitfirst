@@ -13,7 +13,8 @@
                 <!-- Content -->
                 <h6 class="text-uppercase font-weight-bold">{{ config('app.name') }}</h6>
                 <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p>Giving teens hope and a more promising and brighter future.</p>
+                <p>Giving teens hope and a more promising and brighter future.
+                    Vizion It First is a 501(c)(3) tax exempt corporation</p>
 
             </div>
             <!-- Grid column -->
@@ -85,6 +86,12 @@
                     <p><i class="fas fa-phone mr-3 dark-grey-text"></i> {{ $settings->concat_phone() }}</p>
                 @endif
 
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-12 col-md mx-auto mb-md-0 mb-4 text-center">
+                <a href="https://www.guidestar.org/profile/86-2175931" target="_blank"><img src="https://widgets.guidestar.org/gximage2?o=9958409&l=v4" /></a>
             </div>
             <!-- Grid column -->
 
